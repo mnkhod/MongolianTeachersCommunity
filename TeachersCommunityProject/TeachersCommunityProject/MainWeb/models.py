@@ -16,7 +16,22 @@ class Bagsh(models.Model):
         verbose_name="Багш"
         verbose_name_plural="Багш Нар"
 
-class Post(models.Model):
+class News(models.Model):
+    title=models.CharField(max_length=250)
+    slug=models.SlugField(max_length=250,unique=True)
+    author=models.ForeignKey(Bagsh,on_delete=models.CASCADE)
+    newsImg=models.ImageField(upload_to='news',verbose_name="Зураг")
+    body=models.TextField()
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering =('-created',)
+
+class Law(models.Model):
     title=models.CharField(max_length=250)
     slug=models.SlugField(max_length=250,unique=True)
     author=models.ForeignKey(Bagsh,on_delete=models.CASCADE)
