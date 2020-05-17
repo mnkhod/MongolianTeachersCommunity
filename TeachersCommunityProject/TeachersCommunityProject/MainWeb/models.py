@@ -1,6 +1,5 @@
 from django.db import models
-from django.utils import timezone 
-from django.contribs.auth.models import User
+from django.utils import timezone
 # Create your models here.
 
 class Bagsh(models.Model):
