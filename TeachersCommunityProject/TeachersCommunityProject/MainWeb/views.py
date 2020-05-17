@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 #Static
 def index(req):
-    return HttpResponse("Home")
+    return render(req,'index.html',)
 
 def about_us(req):
     return HttpResponse("Bidnii Tuhai")
