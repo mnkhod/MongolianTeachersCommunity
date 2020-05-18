@@ -50,7 +50,7 @@ class Comment(models.Model):
     email=models.EmailField()
     content=models.TextField()
     created=models.DateTimeField(auto_now_add=True,editable=False)
-    post_id=models.ForeignKey(Post, on_delete=models.CASCADE)
+    news_id=models.ForeignKey(News,on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
