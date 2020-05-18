@@ -8,10 +8,13 @@ class BagshAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug' : ('title',)}
 
+class LawsAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug' : ('title',)}
+
 # Register your models here.
 admin.site.register(Bagsh,BagshAdmin)
 admin.site.register(News,NewsAdmin)
-admin.site.register(Law)
+admin.site.register(Law,LawsAdmin)
 admin.site.register(Comment)
 admin.site.register(ContactUs)
 
