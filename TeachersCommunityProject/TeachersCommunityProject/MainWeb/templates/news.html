@@ -1,152 +1,11 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en-US">
+ {% extends "base.html" %}
+{% load static %}
 
-<head>
+{% block content %}
 
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<meta name="author" content="SemiColonWeb" />
-
-	<!-- Stylesheets
-	============================================= -->
-	<link
-		href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
-		rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<link rel="stylesheet" href="css/dark.css" type="text/css" />
-	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
-	<link rel="stylesheet" href="css/animate.css" type="text/css" />
-	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
-	<link rel="stylesheet" href="css/components/bs-select.css" type="text/css" />
-    <link href="images/favicon_io/favicon.ico" rel="icon" type="image/x-icon" />
-	<link rel="stylesheet" href="css/responsive.css" type="text/css" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-
-	<!-- Document Title
-	============================================= -->
-	<title>Мэдээ | МБНҮЭХ</title>
-
-</head>
-<body class="stretched">
-
-	<!-- Document Wrapper
-	============================================= -->
-	<div id="wrapper" class="clearfix">
-
-		<div id="top-bar">
-
-			<div class="container clearfix">
-
-				<div class="col_half nobottommargin">
-
-					<!-- Top Links
-					============================================= -->
-					<div class="top-links">
-						<ul>
-							<li><a href="index.html">НҮҮР</a></li>
-							<li><a href="contactus.html">Холбоо барих</a></li>
-						</ul>
-					</div><!-- .top-links end -->
-
-				</div>
-
-				<div class="col_half fright col_last nobottommargin">
-
-					<!-- Top Social
-					============================================= -->
-					<div id="top-social">
-						<ul>
-							<li><a href="https://www.facebook.com/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8B%D0%BD-%D0%B1%D0%B0%D0%B3%D1%88-%D0%BD%D0%B0%D1%80%D1%8B%D0%BD-%D2%AF%D0%B9%D0%BB%D0%B4%D0%B2%D1%8D%D1%80%D1%87%D0%BD%D0%B8%D0%B9-%D1%8D%D0%B2%D0%BB%D1%8D%D0%BB%D0%B8%D0%B9%D0%BD-%D1%85%D0%BE%D0%BB%D0%B1%D0%BE%D0%BE-213658032728499/"
-									class="si-facebook" target="blank"><span class="ts-icon"><i
-											class="icon-facebook"></i></span><span class="ts-text">Facebook</span></a>
-							</li>
-							<li><a href="tel:+91.11.85412542" class="si-call"><span class="ts-icon"><i
-											class="icon-call"></i></span><span class="ts-text">+976 80060393, +976
-										88049379</span></a></li>
-							<li><a href="info@canvas.com" class="si-email3"><span class="ts-icon"><i
-											class="icon-email3"></i></span><span
-										class="ts-text">munkhbaatar_d@fmttu.mn</span></a></li>
-						</ul>
-					</div><!-- #top-social end -->
-
-				</div>
-
-			</div>
-
-		</div>
-
-		<!-- Header
-		============================================= -->
-		<header id="header" class="sticky-style-2">
-
-			<div class="container clearfix">
-
-				<!-- Logo
-				============================================= -->
-				<div id="logo">
-					<a href="index.html" class="standard-logo" data-dark-logo="images/bagsh1.jpg"><img
-							src="images/bagsh1.jpg" alt=""></a>
-					<a href="index.html" class="retina-logo" data-dark-logo="images/bagsh1.jpg">
-						<img src="images/bagsh1.jpg" alt="" style="margin-left: 20%;"></a>
-				</div><!-- #logo end -->
-				<div class="top-advert">
-					<img src="images/bagshad.jpg" style="width: 720px;height:90px ;">
-				</div>
-			</div>
-
-
-			<div id="header-wrap">
-
-				<!-- Primary Navigation
-				============================================= -->
-				<nav id="primary-menu" class="style-2">
-
-					<div class="container clearfix">
-
-						<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
-
-
-
-						<ul class="one-page-menu">
-
-							<li><a href="index.html">
-									<div>НҮҮР</div>
-								</a></li>
-							<li><a href="news.html">
-									<div>Мэдээ мэдээлэл</div>
-								</a></li>
-							<li><a href="law.html">
-									<div>Хууль </div>
-								</a></li>
-							<li><a href="aboutus.html">
-									<div>Бидний тухай</div>
-								</a></li>
-							<li><a href="contactus.html">
-									<div>Холбоо барих</div>
-								</a></li>
-
-						</ul>
-
-
-
-					</div>
-
-				</nav><!-- #primary-menu end -->
-
-			</div>
-
-		</header><!-- #header end -->
-
-		<!-- Page Title
-		============================================= -->
-		<!-- #page-title end -->
-
-		<!-- Content
-		============================================= -->
 		<section id="content">
 			<!-- <div style="margin-left: 35%;padding-top: 2%;">
-						
+
 						<ul class="portfolio-filter nobottommargin clearfix" data-container="#portfolio">
 
 							<li><a href="#" data-filter=".pf-icons">Icons</a></li>
@@ -295,7 +154,7 @@
 
 							</div>
 
-							
+
 
 
 							<div class="widget clearfix">
@@ -503,9 +362,9 @@
 										</div>
 									</div>
 								</div>
-	
 
-								
+
+
 							</div>
 
 						</div>
@@ -518,68 +377,4 @@
 
 		</section><!-- #content end -->
 
-		<!-- Footer
-		============================================= -->
-		<footer id="footer" class="#fd6620">
-			<!-- Copyrights
-			============================================= -->
-			<div id="copyrights">
-
-				<div class="container clearfix">
-
-					<div class="col_half">
-						<img src="images/footer.png" alt="" class="footer-logo" style="width: 60px;height: 80px;">
-
-					</div>
-
-					<div class="col_half col_last tright">
-						<div class="copyrights-menu copyright-links fright clearfix">
-							<a href="index.html">Нүүр</a>/<a href="news.html">Мэдээ мэдээлэл</a>/<a
-								href="law.html">Хууль</a>/<a href="aboutus.html">Бидний тухай</a>/<a
-								href="contactus.html">Холбоо барих</a>
-						</div>
-						<div class="fright clearfix">
-							<a href="https://www.facebook.com/Монголын-багш-нарын-үйлдвэрчний-эвлэлийн-холбоо-213658032728499/" target="_blank"
-								class="social-icon si-small si-borderless nobottommargin si-facebook">
-								<i class="icon-facebook"></i>
-								<i class="icon-facebook"></i>
-							</a>
-
-							<a href="#" class="social-icon si-small si-borderless nobottommargin si-twitter">
-								<i class="icon-twitter"></i>
-								<i class="icon-twitter"></i>
-							</a>
-
-							<a href="mailto:munkhbaatar_d@fmttu.mn" class="social-icon si-small si-borderless nobottommargin si-gplus">
-								<i class="icon-gplus"></i>
-								<i class="icon-gplus"></i>
-							</a>
-
-
-						</div>
-					</div>
-
-				</div>
-
-			</div><!-- #copyrights end -->
-
-		</footer><!-- #footer end -->
-
-	</div><!-- #wrapper end -->
-
-	<!-- Go To Top
-	============================================= -->
-	<div id="gotoTop" class="icon-angle-up"></div>
-
-	<!-- External JavaScripts
-	============================================= -->
-	<script src="js/jquery.js"></script>
-	<script src="js/plugins.js"></script>
-
-	<!-- Footer Scripts
-	============================================= -->
-	<script src="js/functions.js"></script>
-
-</body>
-
-</html>
+{% endblock %}
