@@ -5,15 +5,18 @@ from .models import Bagsh,News,Law,Comment,ContactUs
 class BagshAdmin(admin.ModelAdmin):
     list_display = ('name','email')
 
+class NewsAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug' : ('title',)}
+
 # Register your models here.
 admin.site.register(Bagsh,BagshAdmin)
-admin.site.register(News)
+admin.site.register(News,NewsAdmin)
 admin.site.register(Law)
 admin.site.register(Comment)
 admin.site.register(ContactUs)
 
 # Overriding Default Admin Panel Interface Text Contents
-site.site_header = "Монголын Багш Нарын Үйлвэрчний Эвлэлийн Холбоо" #Django Administration
+site.site_header = "Монголын Багш Нарын Үйлдвэрчний Эвлэлийн Холбоо" #Django Administration
 site.site_title = "МБНҮЭХ" #Django Site Admin
 site.index_title = "Админы Хэсэг" # Site Administration
 
