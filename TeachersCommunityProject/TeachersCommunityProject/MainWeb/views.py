@@ -6,7 +6,7 @@ def index(req):
     return render(req,'index.html',)
 
 def about_us(req):
-    return HttpResponse("Bidnii Tuhai")
+    return render(req,'aboutus.html')
 
 def contact_us(req):
     return HttpResponse("Holboo Barih")
