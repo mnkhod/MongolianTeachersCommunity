@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-# Create your models here.
 
 class Bagsh(models.Model):
     name=models.CharField(max_length=250,verbose_name="Нэр")
