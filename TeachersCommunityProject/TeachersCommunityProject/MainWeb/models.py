@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 from django.utils import timezone
 
 class Bagsh(models.Model):
@@ -25,7 +26,7 @@ class News(models.Model):
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         ordering =('-created',)
@@ -36,12 +37,13 @@ class Law(models.Model):
     title=models.CharField(max_length=250,verbose_name="Гарчиг")
     slug=models.SlugField(max_length=250,unique=True,verbose_name="Сайтын Зам")
     author=models.ForeignKey(Bagsh,on_delete=models.CASCADE,verbose_name="Зохиогч")
-    body=models.TextField(verbose_name="Агуулга")
+    pdf=models.FileField(upload_to="laws",verbose_name="Хуулийн PDF Агуулга",
+                                validators=[FileExtensionValidator(allowed_extensions=['pdf'])], blank=False, default=None)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
     class Meta:
         ordering =('-created',)
