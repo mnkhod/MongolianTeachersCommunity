@@ -61,4 +61,7 @@ def laws_archive(req):
     return render(req, 'laws.html',context)
 
 def laws_single(req,laws_slug):
-    return render(req, 'lawcontent.html',)
+    laws = Law.objects.get(slug=laws_slug)
+
+    context = {'laws' : laws }
+    return render(req, 'lawcontent.html',context)
