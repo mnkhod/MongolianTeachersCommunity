@@ -22,7 +22,7 @@ class News(models.Model):
     author=models.ForeignKey(Bagsh,on_delete=models.CASCADE,verbose_name="Зохиогч")
     newsImg=models.ImageField(upload_to='news',verbose_name="Зураг")
     body=models.TextField(verbose_name="Агуулга")
-    featured=models.BooleanField(default=None,null=True)
+    featured=models.BooleanField(default=False,null=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True)
 

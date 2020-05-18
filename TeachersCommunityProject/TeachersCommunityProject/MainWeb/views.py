@@ -1,10 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import News
 
 
 #Static
 def index(req):
-    return render(req,'index.html',)
+    featuredNews = News.objects.filter(featured=True)
+    context = { 'news' : featuredNews }
+
+    return render(req,'index.html',context)
 
 def about_us(req):
     return render(req, 'aboutus.html')
