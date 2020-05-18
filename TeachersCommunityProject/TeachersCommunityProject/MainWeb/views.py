@@ -7,10 +7,11 @@ from .models import News
 def index(req):
     featuredNews = News.objects.filter(featured=True)
 
-    TopTwoNews = News.objects.order_by('created')[:2]
+    topTwoNews = News.objects.order_by('created')[:2]
+    latestNews = News.objects.order_by('updated')[:3]
 
 
-    context = { 'news' : featuredNews , 'topNews' : TopTwoNews }
+    context = { 'news' : featuredNews , 'topNews' : topTwoNews, 'latestNews' : latestNews }
 
     return render(req,'index.html',context)
 

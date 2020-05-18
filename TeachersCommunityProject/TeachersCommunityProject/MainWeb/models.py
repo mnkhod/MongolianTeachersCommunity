@@ -29,25 +29,6 @@ class NewsCategory(models.Model):
         verbose_name="Мэдээний Төрөл"
         verbose_name_plural="Мэдээний Төрлийн Жагсаалт"
 
-class News(models.Model):
-    title=models.CharField(max_length=250,verbose_name="Гарчиг")
-    slug=models.SlugField(max_length=250,unique=True,verbose_name="Сайтын Зам")
-    author=models.ForeignKey(Bagsh,on_delete=models.CASCADE,verbose_name="Зохиогч")
-    categories=models.ManyToManyField(NewsCategory,verbose_name="Мэдээний Төрлийн Жагсаалт",related_name="turuls")
-    newsImg=models.ImageField(upload_to='news',verbose_name="Зураг")
-    body=models.TextField(verbose_name="Агуулга")
-    featured=models.BooleanField(default=False,null=True,verbose_name="Онцлог Эсэх?")
-    created = models.DateTimeField(auto_now_add=True, editable=False)
-    updated = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.title
-
-    class Meta:
-        ordering =('-created',)
-        verbose_name="Мэдээ"
-        verbose_name_plural="Мэдээний Жагсаалт"
-
 class Law(models.Model):
     title=models.CharField(max_length=250,verbose_name="Гарчиг")
     slug=models.SlugField(max_length=250,unique=True,verbose_name="Сайтын Зам")
@@ -65,12 +46,12 @@ class Law(models.Model):
         verbose_name_plural="Хуулийн Жагсаалт"
         verbose_name="Хууль"
 
+
 class Comment(models.Model):
     name=models.CharField(max_length=250,verbose_name="Хэрэглэгчийн Нэр")
     email=models.EmailField(verbose_name="Эмайл Хаяг")
     content=models.TextField(verbose_name="Агуулга")
     created=models.DateTimeField(auto_now_add=True,editable=False)
-    news_id=models.ForeignKey(News,on_delete=models.CASCADE,verbose_name="Холбогдох Мэдээ")
 
     def __str__(self):
         return self.name
@@ -79,6 +60,27 @@ class Comment(models.Model):
         ordering =('-created',)
         verbose_name_plural="Сэтгэгдэлийн Жагсаалт"
         verbose_name="Сэтгэгдэл"
+
+
+class News(models.Model):
+    title=models.CharField(max_length=250,verbose_name="Гарчиг")
+    slug=models.SlugField(max_length=250,unique=True,verbose_name="Сайтын Зам")
+    author=models.ForeignKey(Bagsh,on_delete=models.CASCADE,verbose_name="Зохиогч")
+    categories=models.ManyToManyField(NewsCategory,verbose_name="Мэдээний Төрлийн Жагсаалт")
+    comments=models.ManyToManyField(Comment,blank=True,verbose_name="Холбогдох Сэтгэгдэлийн Жагсаалт")
+    newsImg=models.ImageField(upload_to='news',verbose_name="Зураг")
+    body=models.TextField(verbose_name="Агуулга")
+    featured=models.BooleanField(default=False,null=True,verbose_name="Онцлог Эсэх?")
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering =('-created',)
+        verbose_name="Мэдээ"
+        verbose_name_plural="Мэдээний Жагсаалт"
 
 
 class ContactUs(models.Model):
