@@ -13,14 +13,14 @@ class Bagsh(models.Model):
     class Meta:
         ordering =('name',)
         verbose_name="Багш"
-        verbose_name_plural="Багш Нар"
+        verbose_name_plural="Багш Нарын Жагсаалт"
 
 class News(models.Model):
-    title=models.CharField(max_length=250)
-    slug=models.SlugField(max_length=250,unique=True)
-    author=models.ForeignKey(Bagsh,on_delete=models.CASCADE)
+    title=models.CharField(max_length=250,verbose_name="Гарчиг")
+    slug=models.SlugField(max_length=250,unique=True,verbose_name="Сайтын Зам")
+    author=models.ForeignKey(Bagsh,on_delete=models.CASCADE,verbose_name="Зохиогч")
     newsImg=models.ImageField(upload_to='news',verbose_name="Зураг")
-    body=models.TextField()
+    body=models.TextField(verbose_name="Агуулга")
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True)
 
@@ -29,12 +29,14 @@ class News(models.Model):
 
     class Meta:
         ordering =('-created',)
+        verbose_name="Мэдээ"
+        verbose_name_plural="Мэдээний Жагсаалт"
 
 class Law(models.Model):
-    title=models.CharField(max_length=250)
-    slug=models.SlugField(max_length=250,unique=True)
-    author=models.ForeignKey(Bagsh,on_delete=models.CASCADE)
-    body=models.TextField()
+    title=models.CharField(max_length=250,verbose_name="Гарчиг")
+    slug=models.SlugField(max_length=250,unique=True,verbose_name="Сайтын Зам")
+    author=models.ForeignKey(Bagsh,on_delete=models.CASCADE,verbose_name="Зохиогч")
+    body=models.TextField(verbose_name="Агуулга")
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True)
 
@@ -43,25 +45,30 @@ class Law(models.Model):
 
     class Meta:
         ordering =('-created',)
+        verbose_name_plural="Хуулийн Жагсаалт"
+        verbose_name="Хууль"
 
 class Comment(models.Model):
-    name=models.CharField(max_length=250)
-    email=models.EmailField()
-    content=models.TextField()
+    name=models.CharField(max_length=250,verbose_name="Хэрэглэгчийн Нэр")
+    email=models.EmailField(verbose_name="Эмайл Хаяг")
+    content=models.TextField(verbose_name="Агуулга")
     created=models.DateTimeField(auto_now_add=True,editable=False)
-    news_id=models.ForeignKey(News,on_delete=models.CASCADE)
+    news_id=models.ForeignKey(News,on_delete=models.CASCADE,verbose_name="Холбогдох Мэдээ")
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering =('-created',)
+        verbose_name_plural="Сэтгэгдэлийн Жагсаалт"
+        verbose_name="Сэтгэгдэл"
+
 
 class ContactUs(models.Model):
-    fullName=models.CharField(max_length=254)
-    email=models.EmailField()
-    phone=models.CharField(max_length=12)
-    text=models.TextField()
+    fullName=models.CharField(max_length=254,verbose_name="Бүтэн Нэр")
+    email=models.EmailField(verbose_name="Эмайл Хаяг")
+    phone=models.CharField(max_length=12,verbose_name="Утас")
+    text=models.TextField(verbose_name="Агуулга")
     created = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
@@ -69,3 +76,5 @@ class ContactUs(models.Model):
 
     class Meta:
         ordering =('-created',)
+        verbose_name_plural="Бидэнтэй Холбогдох Жагсаалт"
+        verbose_name="Бидэнтэй Холбогдох"
