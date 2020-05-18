@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.contrib.admin.sites import AdminSite as site
-from .models import Bagsh,News,Law,Comment,ContactUs
+from .models import Bagsh,News,Law,Comment,ContactUs,NewsCategory
 
 class BagshAdmin(admin.ModelAdmin):
     list_display = ('name','email')
 
 class NewsAdmin(admin.ModelAdmin):
+    list_display = ('title','featured')
     prepopulated_fields = {'slug' : ('title',)}
 
 class LawsAdmin(admin.ModelAdmin):
@@ -17,6 +18,7 @@ admin.site.register(News,NewsAdmin)
 admin.site.register(Law,LawsAdmin)
 admin.site.register(Comment)
 admin.site.register(ContactUs)
+admin.site.register(NewsCategory)
 
 # Overriding Default Admin Panel Interface Text Contents
 site.site_header = "Монголын Багш Нарын Үйлдвэрчний Эвлэлийн Холбоо" #Django Administration

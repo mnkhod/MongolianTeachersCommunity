@@ -6,7 +6,11 @@ from .models import News
 #Static
 def index(req):
     featuredNews = News.objects.filter(featured=True)
-    context = { 'news' : featuredNews }
+
+    TopTwoNews = News.objects.order_by('created')[:2]
+
+
+    context = { 'news' : featuredNews , 'topNews' : TopTwoNews }
 
     return render(req,'index.html',context)
 

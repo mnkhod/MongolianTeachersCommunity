@@ -15,7 +15,7 @@
 
 	   {% for n in news %}
 	   <div class="oc-item">
-	     <a href="#"><img src="{% static "media/" %}{{n.newsImg}}" alt="Image 2" style="height: 401px;"></a>
+	     <a href="//"><img src="{% static "media/" %}{{n.newsImg}}" alt="Image 2" style="height: 401px;"></a>
 	     <div class="overlay">
 	       <div class="text-overlay">
 		 <span class="badge badge-danger">Онцгой</span>
@@ -36,7 +36,9 @@
 
 	 <div class="container clearfix">
 	   <div class="fancy-title title-border">
-	     <h3>Улс төр</h3>
+	     {% with getTopCategoryName=topNews.0.categories.all.0 %}
+	     <h3>{{ getTopCategoryName.name  }}</h3>
+	     {% endwith %}
 	   </div>
 
 	   <div class="row bottommargin-sm clearfix">
@@ -45,14 +47,13 @@
 
 	       <div class="ipost clearfix">
 		 <div class="entry-image">
-		   <a href="#"><img class="image_fade" src="{% static 'images/bat-uul.jpg' %}" alt="Image"></a>
+		   <a href="//"><img class="image_fade" src="{% static 'media/' %}{{ topNews.0.newsImg }}" alt="Image"></a>
 		 </div>
 		 <div class="entry-title">
-		   <h3><a href="newscontent.html">Toyotas next minivan will let you shout at your kids
-		       without turning around</a></h3>
+		   <h3><a href="{% url "newsSingle" topNews.0.slug %}">{{ topNews.0.title }}</a></h3>
 		 </div>
 		 <ul class="entry-meta clearfix">
-		   <li><i class="icon-calendar3"></i> 2020 оны 5-р сарын 12</li>
+		   <li><i class="icon-calendar3"></i>{{ topNews.0.created }}</li>
 		   <li><a href="newscontent.html#comments"><i class="icon-comments"></i> 31
 		       Сэтгэгдэл</a></li>
 
@@ -87,7 +88,9 @@
 	   </div>
 
 	   <div class="fancy-title title-border">
-	     <h3>Эдийн засаг</h3>
+	     {% with getTopCategoryName=topNews.1.categories.all.0 %}
+	     <h3>{{ getTopCategoryName.name  }}</h3>
+	     {% endwith %}
 	   </div>
 
 	   <div class="row bottommargin-sm clearfix">
@@ -96,15 +99,14 @@
 
 	       <div class="ipost clearfix">
 		 <div class="entry-image">
-		   <a href="#"><img class="image_fade" src="{% static 'images/mungu.jpg' %}" alt="Image"
+		   <a href="//"><img class="image_fade" src="{% static 'media/' %}{{ topNews.1.newsImg }}" alt="Image"
 								style="height:429px;"></a>
 		 </div>
 		 <div class="entry-title">
-		   <h3><a href="blog-single.html">СТАТИСТИК: Эхний дөрвөн сард 7.5 мянган хүн
-		       Ажилгүйдлийн даатгалын сангаас тэтгэмж авжээ.</a></h3>
+		   <h3><a href="{% url "newsSingle" topNews.1.slug %}">{{topNews.1.title}}</a></h3>
 		 </div>
 		 <ul class="entry-meta clearfix">
-		   <li><i class="icon-calendar3"></i> 2020 оны 5-р сарын 12</li>
+		   <li><i class="icon-calendar3"></i>{{topNews.1.created}}</li>
 		   <li><a href="blog-single.html#comments"><i class="icon-comments"></i> 22
 		       Сэтгэгдэл</a></li>
 

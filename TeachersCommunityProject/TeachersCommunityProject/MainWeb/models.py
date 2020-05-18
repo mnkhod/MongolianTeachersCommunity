@@ -16,13 +16,27 @@ class Bagsh(models.Model):
         verbose_name="Багш"
         verbose_name_plural="Багш Нарын Жагсаалт"
 
+class NewsCategory(models.Model):
+    name=models.CharField(max_length=250,verbose_name="Мэдээний Төрлийн Нэр")
+    created = models.DateTimeField(auto_now_add=True, editable=False)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering =('name',)
+        verbose_name="Мэдээний Төрөл"
+        verbose_name_plural="Мэдээний Төрлийн Жагсаалт"
+
 class News(models.Model):
     title=models.CharField(max_length=250,verbose_name="Гарчиг")
     slug=models.SlugField(max_length=250,unique=True,verbose_name="Сайтын Зам")
     author=models.ForeignKey(Bagsh,on_delete=models.CASCADE,verbose_name="Зохиогч")
+    categories=models.ManyToManyField(NewsCategory,verbose_name="Мэдээний Төрлийн Жагсаалт",related_name="turuls")
     newsImg=models.ImageField(upload_to='news',verbose_name="Зураг")
     body=models.TextField(verbose_name="Агуулга")
-    featured=models.BooleanField(default=False,null=True)
+    featured=models.BooleanField(default=False,null=True,verbose_name="Онцлог Эсэх?")
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True)
 
