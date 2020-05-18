@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import News
+from .models import News, NewsCategory, ContactUs, Law, Comment , Bagsh
 
 
 #Static
@@ -12,7 +12,7 @@ def index(req):
 
 
     context = { 'news' : featuredNews , 'topNews' : topTwoNews, 'latestNews' : latestNews }
-
+  
     return render(req,'index.html',context)
 
 def about_us(req):
@@ -23,13 +23,42 @@ def contact_us(req):
 
 #Dynamic
 def news_archive(req):
-    return render(req, 'news.html',)
+    featuredNews = News.objects.filter(featured=True)
+    latestNews = News.objects.order_by('updated')[:3]
+    news = News.objects.all()
+    allCategories = NewsCategory.objects.all()
 
-def news_single(req,news_id):
-    return render(req,"newscontent.html")
+    context = { 'featuredNews' : featuredNews , 'news' : news, 'latestNews' : latestNews , 'categories' : allCategories }
+
+    if req.method == 'POST':
+        item = ContactUs(fullName=req.POST['fname'],email=req.POST['email']
+            ,phone=req.POST['phone'],text=req.POST['content'])
+        item.save()
+
+    return render(req, 'news.html',context)
+
+def news_single(req,news_slug):
+    featuredNews = News.objects.filter(featured=True)
+    latestNews = News.objects.order_by('updated')[:3]
+    news = News.objects.get(slug=news_slug)
+    isBagsh = False
+
+    if req.method == 'POST':
+        item = Comment(name=req.POST['name'],email=req.POST['email']
+            ,content=req.POST['content'])
+        item.save()
+        news.comments.add(item)
+        news.save()
+
+    context = {'featuredNews' : featuredNews , 'news' : news, 'latestNews' : latestNews , 'isBagsh' : isBagsh}
+    return render(req,"newscontent.html",context)
 
 def laws_archive(req):
-    return render(req, 'laws.html',)
+    laws = Law.objects.all()
 
-def laws_single(req,laws_id):
+    context = { 'laws' : laws}
+
+    return render(req, 'laws.html',context)
+
+def laws_single(req,laws_slug):
     return render(req, 'lawcontent.html',)

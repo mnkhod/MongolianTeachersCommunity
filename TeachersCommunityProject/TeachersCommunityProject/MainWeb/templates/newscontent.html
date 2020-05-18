@@ -21,45 +21,36 @@
 								<!-- Entry Title
 								============================================= -->
 								<div class="entry-title">
-									<h2>static medeenii GARCHIG</h2>
+									<h2>{{news.title}}</h2>
 								</div><!-- .entry-title end -->
 
 								<!-- Entry Meta
 								============================================= -->
 								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i>20/5/2020</li>
-									<li><a href="#"><i class="icon-user"></i> Админ</a></li>
-									<li><i class="icon-folder-open"></i> <a href="#">Багш</a>, <a href="#">Улс төр</a></li>
-									<li><a href="#"><i class="icon-comments"></i> 43 Сэтгэгдэл</a></li>	
+									<li><i class="icon-calendar3"></i>{{news.created}}</li>
+									<li><a href="#"><i class="icon-user"></i> {{news.author.name}}</a></li>
+									<li><i class="icon-folder-open"></i> 
+										{% for i in news.categories.all %}
+											{% if forloop.last %}
+												<a href="{% url 'news' %}">{{i.name}}</a>
+											{% else %}
+												<a href="{% url 'news' %}">{{i.name}}</a>,
+											{% endif %}
+										{% endfor %}
+									</li>
+									<li><a href="//"><i class="icon-comments"></i> {{news.comments.all.count}} Сэтгэгдэл</a></li>	
 								</ul><!-- .entry-meta end -->
 
 								<!-- Entry Image
 								============================================= -->
 								<div class="entry-image">
-									<a href="#"><img src="images/bat-uul.jpg" alt="Blog Single"></a>
+									<a href="//"><img src="{% static "media/" %}{{news.newsImg}}" alt="Blog Single"></a>
 								</div><!-- .entry-image end -->
 
 								<!-- Entry Content
 								============================================= -->
 								<div class="entry-content notopmargin">
-
-									<p>static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel </p>
-
-									<p>static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel </p>
-
-									<blockquote><p>static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel .</p></blockquote>
-
-									<p>static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel 
-									<p>Mstatic medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel 
-
-									<p>static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel </p>
-
-									<p>static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel static medeelel .</p>
-									<!-- Post Single - Content End -->
-
-
-									<div class="clear"></div>
-
+									{{news.body|safe}}
 								</div>
 							</div><!-- .entry end -->
 
@@ -78,12 +69,13 @@
 							============================================= -->
 							<div id="comments" class="clearfix">
 
-								<h3 id="comments-title"><span>3</span> Сэтгэгдэл</h3>
+								<h3 id="comments-title"><span>{{news.comments.all.count}}</span> Сэтгэгдэл</h3>
 
 								<!-- Comments List
 								============================================= -->
 								<ol class="commentlist clearfix">
 
+									{% for i in news.comments.all %}
 									<li class="comment even thread-even depth-1" id="li-comment-1">
 
 										<div id="comment-1" class="comment-wrap clearfix">
@@ -93,7 +85,12 @@
 												<div class="comment-author vcard">
 
 													<span class="comment-avatar clearfix">
-													<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' /></span>
+													{% if isBagsh %}
+														<img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' />
+													{% else %}
+														<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' />
+													{% endif %}
+												    </span>
 
 												</div>
 
@@ -101,77 +98,10 @@
 
 											<div class="comment-content clearfix">
 
-												<div class="comment-author">bagsh1<span><a href="#" title="Permalink to this comment">20/5/2020  10:46 </a></span></div>
+												<div class="comment-author">{{i.name}}<span><a href="#" title="Permalink to this comment">{{i.created}}</a></span></div>
 
-												<p>static comment heseg</p>
-												<a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
-
-											</div>
-
-											<div class="clear"></div>
-
-										</div>
-
-
-										<ul class='children'>
-
-											<li class="comment byuser comment-author-_smcl_admin odd alt depth-2" id="li-comment-3">
-
-												<div id="comment-3" class="comment-wrap clearfix">
-
-													<div class="comment-meta">
-
-														<div class="comment-author vcard">
-
-															<span class="comment-avatar clearfix">
-															<img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=40&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D40&amp;r=G' class='avatar avatar-40 photo' height='40' width='40' /></span>
-
-														</div>
-
-													</div>
-
-													<div class="comment-content clearfix">
-
-														<div class="comment-author"><a ='#' rel='external nofollow' class='url'>bagsh2</a><span><a href="#" title="Permalink to this comment">5/5/2020 at 1:03 </a></span></div>
-
-														<p>static reply heseg</p>
-
-														<a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
-
-													</div>
-
-													<div class="clear"></div>
-
-												</div>
-
-											</li>
-
-										</ul>
-
-									</li>
-
-									<li class="comment byuser comment-author-_smcl_admin even thread-odd thread-alt depth-1" id="li-comment-2">
-
-										<div id="comment-2" class="comment-wrap clearfix">
-
-											<div class="comment-meta">
-
-												<div class="comment-author vcard">
-
-													<span class="comment-avatar clearfix">
-													<img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' /></span>
-
-												</div>
-
-											</div>
-
-											<div class="comment-content clearfix">
-
-												<div class="comment-author"><a href='http://themeforest.net/user/semicolonweb' rel='external nofollow' class='url'>bagsh2</a><span><a href="#" title="Permalink to this comment">6/5/2020  1:03 </a></span></div>
-
-												<p>bagsh2 iin comment hiseg </p>
-
-												<a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
+												<p>{{i.content}}</p>
+												<a class='comment-reply-link' href='//'><i class="icon-reply"></i></a>
 
 											</div>
 
@@ -180,6 +110,8 @@
 										</div>
 
 									</li>
+									{% endfor %}
+
 
 								</ol><!-- .commentlist end -->
 
@@ -191,11 +123,11 @@
 
 									<h3><span>Сэтгэгдэл </span>үлдээх</h3>
 
-									<form class="clearfix" action="#" method="post" id="commentform">
-
+									<form class="clearfix" action="" method="post" id="commentform">
+										{% csrf_token %}
 										<div class="col_one_third">
 											<label for="author">Нэр</label>
-											<input type="text" name="author" id="author" value="" size="22" tabindex="1" class="sm-form-control" />
+											<input type="text" name="name" id="author" value="" size="22" tabindex="1" class="sm-form-control" />
 										</div>
 
 										<div class="col_one_third">
@@ -206,8 +138,8 @@
 										<div class="clear"></div>
 
 										<div class="col_full">
-											<label for="comment">Сэтгэгдэл</label>
-											<textarea name="comment" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
+											<label for="content">Сэтгэгдэл</label>
+											<textarea name="content" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
 										</div>
 
 										<div class="col_full nobottommargin">
@@ -254,94 +186,43 @@
 										<div class="tab-content clearfix" id="tabs-1"> <!--Онцлох medeenii tab(blogSingle)-->
 											<div id="popular-post-list-sidebar">
 
+												{% for i in featuredNews %}
 												<div class="spost clearfix">
 													<div class="entry-image">
-														<a href="#" class="nobg"><img class="rounded-circle" src="{% static 'images/magazine/small/3.jpg' %}" alt=""></a>
+														<a href="//" class="nobg"><img class="rounded-circle" src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
 													</div>
 													<div class="entry-c">
 														<div class="entry-title">
-															<h4><a href="#">STATIC MEDEENII GARCHIG1(Онцлох)</a></h4>
+															<h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(Онцлох)</a></h4>
 														</div>
 														<ul class="entry-meta">
-															<li><i class="icon-comments-alt"></i> 35 Сэтгэгдэл(Онцлох)</li>
+															<li><i class="icon-comments-alt"></i> {{i.comments.all.count}} Сэтгэгдэл(Онцлох)</li>
 														</ul>
 													</div>
 												</div>
+												{% endfor %}
 
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="#" class="nobg"><img class="rounded-circle" src="{ % static 'images/magazine/small/2.jpg' %}" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="#">STATIC MEDEENII GARCHIG1(Онцлох)</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li><i class="icon-comments-alt"></i> 24 Сэтгэгдэл(Онцлох)</li>
-														</ul>
-													</div>
-												</div>
-
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="#" class="nobg"><img class="rounded-circle" src="{% static 'images/magazine/small/1.jpg" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="#">STATIC MEDEENII GARCHIG1(Онцлох)</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li><i class="icon-comments-alt"></i> 19 Сэтгэгдэл(Онцлох)</li>
-														</ul>
-													</div>
-												</div>
 
 											</div>
 										</div>
 										<div class="tab-content clearfix" id="tabs-2" > <!--Сүүлийн үеийн medeenii tab(blogSingle)-->
 											<div id="recent-post-list-sidebar" >
 
+												{% for i in latestNews %}
 												<div class="spost clearfix">
 													<div class="entry-image">
-														<a href="#" class="nobg"><img class="rounded-circle" src="images/bat-uul.jpg" alt=""></a>
+														<a href="//" class="nobg"><img class="rounded-circle" src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
 													</div>
 													<div class="entry-c">
 														<div class="entry-title">
-															<h4><a href="#">STATIC MEDEENII GARCHIG1(Сүүлийн үеийн)</a></h4>
+															<h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(Сүүлийн үеийн)</a></h4>
 														</div>
 														<ul class="entry-meta">
-															<li>он сар өдөр(Сүүлийн үеийн)</li>
+															<li>{{i.created}}(Сүүлийн үеийн)</li>
 														</ul>
 													</div>
 												</div>
-
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="#" class="nobg"><img class="rounded-circle" src="images/magazine/small/2.jpg" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="#">STATIC MEDEENII GARCHIG1(Сүүлийн үеийн)</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li>он сар өдөр(Сүүлийн үеийн)</li>
-														</ul>
-													</div>
-												</div>
-
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="#" class="nobg"><img class="rounded-circle" src="images/magazine/small/3.jpg" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="#">STATIC MEDEENII GARCHIG1(Сүүлийн үеийн)</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li>он сар өдөр(Сүүлийн үеийн)</li>
-														</ul>
-													</div>
-												</div>
+												{% endfor %}
 
 											</div>
 										</div>
@@ -350,22 +231,7 @@
 
 								</div>
 								
-								<div class="widget quick-contact-widget form-widget clearfix">
 
-									<h4>Xолбогдох</h4> <!--mail bichdeg panel-->
-									<div class="form-result"></div>
-									<form id="quick-contact-form" name="quick-contact-form" action="include/form.php" method="post" class="quick-contact-form nobottommargin">
-										<div class="form-process"></div>
-	
-										<input type="text" class="required sm-form-control input-block-level" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Нэр Овог" />
-										<input type="text" class="required sm-form-control email input-block-level" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Цахим хаяг" />
-										<textarea class="required sm-form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30"></textarea>
-										<input type="text" class="hidden" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
-										<input type="hidden" name="prefix" value="quick-contact-form-">
-										<button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="button button-small button-3d nomargin" value="submit">Илгээх</button>
-									</form>
-									
-								</div>
 	
 							</div>	
 

@@ -44,53 +44,24 @@
 										<!--Онцлох medeenii tab-->
 										<div id="popular-post-list-sidebar">
 
+											{% for i in featuredNews %}
 											<div class="spost clearfix">
 												<div class="entry-image">
-													<a href="#" class="nobg"><img class="rounded-circle"
-															src="images/magazine/small/3.jpg" alt=""></a>
+													<a href="//" class="nobg"><img class="rounded-circle"
+															src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
 												</div>
 												<div class="entry-c">
 													<div class="entry-title">
-														<h4><a href="#">STATIC MEDEENII GARCHIG1(Онцлох)</a></h4>
+														<h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}</a></h4>
 													</div>
 													<ul class="entry-meta">
-														<li><i class="icon-comments-alt"></i> 35 Сэтгэгдэл(Онцлох)
+														<li><i class="icon-comments-alt"></i> {{i.comments.all.count}} Сэтгэгдэл(Онцлох)
 														</li>
 													</ul>
 												</div>
 											</div>
+											{% endfor %}
 
-											<div class="spost clearfix">
-												<div class="entry-image">
-													<a href="#" class="nobg"><img class="rounded-circle"
-															src="images/magazine/small/2.jpg" alt=""></a>
-												</div>
-												<div class="entry-c">
-													<div class="entry-title">
-														<h4><a href="#">STATIC MEDEENII GARCHIG1(Онцлох)</a></h4>
-													</div>
-													<ul class="entry-meta">
-														<li><i class="icon-comments-alt"></i> 24 Сэтгэгдэл(Онцлох)
-														</li>
-													</ul>
-												</div>
-											</div>
-
-											<div class="spost clearfix">
-												<div class="entry-image">
-													<a href="#" class="nobg"><img class="rounded-circle"
-															src="images/magazine/small/1.jpg" alt=""></a>
-												</div>
-												<div class="entry-c">
-													<div class="entry-title">
-														<h4><a href="#">STATIC MEDEENII GARCHIG1(Онцлох)</a></h4>
-													</div>
-													<ul class="entry-meta">
-														<li><i class="icon-comments-alt"></i> 19 Сэтгэгдэл(Онцлох)
-														</li>
-													</ul>
-												</div>
-											</div>
 
 										</div>
 									</div>
@@ -98,53 +69,24 @@
 										<!--Сүүлийн үеийн medeenii tab-->
 										<div id="recent-post-list-sidebar">
 
+											{% for i in latestNews %}
 											<div class="spost clearfix">
 												<div class="entry-image">
-													<a href="#" class="nobg"><img class="rounded-circle"
-															src="images/magazine/small/1.jpg" alt=""></a>
+													<a href="//" class="nobg"><img class="rounded-circle"
+															src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
 												</div>
 												<div class="entry-c">
 													<div class="entry-title">
-														<h4><a href="#">STATIC MEDEENII GARCHIG1(Сүүлийн үеийн)</a>
+														<h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(Сүүлийн үеийн)</a>
 														</h4>
 													</div>
 													<ul class="entry-meta">
-														<li>он сар өдөр(Сүүлийн үеийн)</li>
+														<li>{{i.created}}(Сүүлийн үеийн)</li>
 													</ul>
 												</div>
 											</div>
+											{% endfor %}
 
-											<div class="spost clearfix">
-												<div class="entry-image">
-													<a href="#" class="nobg"><img class="rounded-circle"
-															src="images/magazine/small/2.jpg" alt=""></a>
-												</div>
-												<div class="entry-c">
-													<div class="entry-title">
-														<h4><a href="#">STATIC MEDEENII GARCHIG1(Сүүлийн үеийн)</a>
-														</h4>
-													</div>
-													<ul class="entry-meta">
-														<li>он сар өдөр(Сүүлийн үеийн)</li>
-													</ul>
-												</div>
-											</div>
-
-											<div class="spost clearfix">
-												<div class="entry-image">
-													<a href="#" class="nobg"><img class="rounded-circle"
-															src="images/magazine/small/3.jpg" alt=""></a>
-												</div>
-												<div class="entry-c">
-													<div class="entry-title">
-														<h4><a href="#">STATIC MEDEENII GARCHIG1(Сүүлийн үеийн)</a>
-														</h4>
-													</div>
-													<ul class="entry-meta">
-														<li>он сар өдөр(Сүүлийн үеийн)</li>
-													</ul>
-												</div>
-											</div>
 
 
 										</div>
@@ -162,50 +104,22 @@
 								<h4>Сүүлд уншсан мэдээнүүд</h4>
 								<div id="post-list-footer">
 
+									{% for i in latestNews %}
 									<div class="spost clearfix">
 										<div class="entry-image">
-											<a href="#" class="nobg"><img src="images/magazine/small/1.jpg" alt=""></a>
+											<a href="//" class="nobg"><img src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
 										</div>
 										<div class="entry-c">
 											<div class="entry-title">
-												<h4><a href="#">STATIC MEDEENII GARCHIG1(СҮҮЛД УНШСАН МЭДЭЭНҮҮД
+												<h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(СҮҮЛД УНШСАН МЭДЭЭНҮҮД
 														recent)</a></h4>
 											</div>
 											<ul class="entry-meta">
-												<li>он сар өдөр</li>
+												<li>{{i.created}}</li>
 											</ul>
 										</div>
 									</div>
-
-									<div class="spost clearfix">
-										<div class="entry-image">
-											<a href="#" class="nobg"><img src="images/magazine/small/2.jpg" alt=""></a>
-										</div>
-										<div class="entry-c">
-											<div class="entry-title">
-												<h4><a href="#">STATIC MEDEENII GARCHIG2(СҮҮЛД УНШСАН МЭДЭЭНҮҮД)</a>
-												</h4>
-											</div>
-											<ul class="entry-meta">
-												<li>он сар өдөр</li>
-											</ul>
-										</div>
-									</div>
-
-									<div class="spost clearfix">
-										<div class="entry-image">
-											<a href="#" class="nobg"><img src="images/magazine/small/3.jpg" alt=""></a>
-										</div>
-										<div class="entry-c">
-											<div class="entry-title">
-												<h4><a href="#">STATIC MEDEENII GARCHIG3(СҮҮЛД УНШСАН МЭДЭЭНҮҮД)</a>
-												</h4>
-											</div>
-											<ul class="entry-meta">
-												<li>он сар өдөр</li>
-											</ul>
-										</div>
-									</div>
+									{% endfor %}
 
 								</div>
 
@@ -216,25 +130,28 @@
 								<h4>Xолбогдох</h4>
 								<!--mail bichdeg panel-->
 								<div class="form-result"></div>
-								<form id="quick-contact-form" name="quick-contact-form" action="include/form.php"
-									method="post" class="quick-contact-form nobottommargin">
+
+								<form action="{% url "news" %}"
+									method="POST" class="quick-contact-form nobottommargin">
+									{% csrf_token %}
 									<div class="form-process"></div>
 
 									<input type="text" class="required sm-form-control input-block-level"
-										id="quick-contact-form-name" name="quick-contact-form-name" value=""
+										id="quick-contact-form-name" name="fname" value=""
 										placeholder="Нэр Овог" />
 									<input type="text" class="required sm-form-control email input-block-level"
-										id="quick-contact-form-email" name="quick-contact-form-email" value=""
+										id="quick-contact-form-email" name="email" value=""
 										placeholder="Цахим хаяг" />
+
+									<input type="number" placeholder="Утасны Дугаар" class="required sm-form-control input-block-level" name="phone" value="">
+
 									<textarea class="required sm-form-control input-block-level short-textarea"
-										id="quick-contact-form-message" name="quick-contact-form-message" rows="4"
+										id="quick-contact-form-message" name="content" rows="4"
 										cols="30"></textarea>
 									<input type="text" class="hidden" id="quick-contact-form-botcheck"
 										name="quick-contact-form-botcheck" value="" />
-									<input type="hidden" name="prefix" value="quick-contact-form-">
-									<button type="submit" id="quick-contact-form-submit"
-										name="quick-contact-form-submit" class="button button-small button-3d nomargin"
-										value="submit">Илгээх</button>
+
+									<button type="submit" class="button button-small button-3d nomargin">Илгээх</button>
 								</form>
 
 							</div>
@@ -249,29 +166,31 @@
 						<!-- Posts
 						============================================= -->
 						<div id="posts" class="small-thumbs">
-
+							{% for n in news %}
 							<div class="entry clearfix">
-								<h5>Эхний мэдээ</h5>
+								<h5>{{n.categories.all|join:" / "}}</h5>
 								<div class="entry-image">
-									<a href="newscontent.html"><img class=""
-											src="images/hen.jpeg"></a>
+									<a href="{% url "newsSingle" n.slug %}"><img class=""
+											src="{% static 'media/' %}{{n.newsImg}}"></a>
 								</div>
 								<div class="entry-c">
 									<div class="entry-title">
-										<h2><a href="newscontent.html">static medeenii garchig</a></h2>
+										<h2><a href="{% url "newsSingle" n.slug %}">{{n.title}}</a></h2>
 									</div>
 									<ul class="entry-meta clearfix">
-										<li><i class="icon-calendar3"></i>9/5/2020</li>
-										<li><a href="#"><i class="icon-user"></i>Админ</a></li>
-										<li><a href="newscontent.html"><i class="icon-comments"></i> 13</a></li>
+										<li><i class="icon-calendar3"></i>{{n.created}}</li>
+										<li><a href="//"><i class="icon-user"></i>{{n.author.name}}</a></li>
+										<li><a href="{% url "newsSingle" n.slug %}"><i class="icon-comments"></i> {{n.comments.all.count}}</a></li>
 										<!--heden hun comment bichsen too bolon onclick hiihed blogSingle iin comment heseg ruu usrene-->
 									</ul>
 									<div class="entry-content">
-										<p>static medee(huraangui)</p>
-										<a href="newscontent.html" class="more-link">Цааш унших</a>
+										<p>{{n.body|truncatewords:15}}</p>
+										<a href="{% url "newsSingle" n.slug %}" class="more-link">Цааш унших</a>
 									</div>
 								</div>
 							</div>
+							{% endfor %}
+
 
 						</div><!-- #posts end -->
 						<!-- .pager end -->
@@ -305,9 +224,9 @@
 											<div class="dropdown bootstrap-select show-tick dropup">
 												<select class="selectpicker" multiple="" data-live-search="true"
 													tabindex="-98">
-													<option>хуушуур</option>
-													<option>Бууз</option>
-													<option>пирожки</option>
+													{% for i in categories %}
+													<option>{{i.name}}</option>
+													{% endfor %}
 												</select>
 												<button type="button" class="btn dropdown-toggle btn-light bs-placeholder"
 													data-toggle="dropdown" role="combobox" aria-owns="bs-select-3"
@@ -330,31 +249,18 @@
 														style="max-height: 128.517px; overflow-y: auto; min-height: 0px;">
 														<ul class="dropdown-menu inner show" role="presentation"
 															style="margin-top: 0px; margin-bottom: 0px;">
+													
+															{% for i in categories %}
 															<li class="">
 																<a role="option" class="dropdown-item" id="bs-select-3-0"
 																	tabindex="0" aria-selected="false" aria-setsize="3"
 																	aria-posinset="1">
 																	<span class=" bs-ok-default check-mark"></span>
-																	<span class="text">хуушуур</span>
+																	<span class="text">{{i.name}}</span>
 																</a>
 															</li>
-															<li class="">
-																<a role="option" class="dropdown-item" id="bs-select-3-1"
-																	tabindex="0" aria-selected="false" aria-setsize="3"
-																	aria-posinset="2">
-																	<span class=" bs-ok-default check-mark">
-																	</span>
-																	<span class="text">Бууз</span>
-																</a>
-															</li>
-															<li class="">
-																<a role="option" class="dropdown-item" id="bs-select-3-2"
-																	tabindex="0" aria-selected="false" aria-setsize="3"
-																	aria-posinset="3">
-																	<span class=" bs-ok-default check-mark"></span>
-																	<span class="text">пирожки</span>
-																</a>
-															</li>
+															{% endfor %}
+
 														</ul>
 													</div>
 												</div>

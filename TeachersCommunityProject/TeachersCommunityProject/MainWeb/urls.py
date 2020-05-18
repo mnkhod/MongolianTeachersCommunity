@@ -7,6 +7,6 @@ urlpatterns = [
     path('laws/',views.laws_archive,name="laws"),
     path('aboutUs/',views.about_us,name="aboutUs"),
     path('contactUs/',views.contact_us,name="contactUs"),
-    path('news/<slug:news_id>/',views.news_single,name="newsSingle"),
-    path('laws/<slug:laws_id>/',views.laws_single,name="lawsSingle"),
+    path('news/<slug:news_slug>/',views.news_single,name="newsSingle"),
+    path('laws/<slug:laws_slug>/',views.laws_single,name="lawsSingle"),
 ]

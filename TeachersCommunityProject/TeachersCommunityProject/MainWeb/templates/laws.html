@@ -9,8 +9,8 @@
 				<h1>Хууль эрх зүй</h1>
 				<span>Багшийн тухай хууль</span>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index-magazine-3.html ">Нүүр</a></li>
-					<li class="breadcrumb-item"><a href=" static 'forms.html">Хууль</a></li>
+					<li class="breadcrumb-item"><a href="{% url "home" %}">Нүүр</a></li>
+					<li class="breadcrumb-item"><a href="{% url "laws" %}">Хууль</a></li>
 					<li class="breadcrumb-item active" aria-current="page">Маягт</li>
 				</ol>
 			</div>
@@ -30,42 +30,15 @@
 					<div class="postcontent nobottommargin clearfix">
 
 						<div class="row">
+							{% for i in laws %}
 							<div class="col-12 col-sm-6 col-md-4 mb-5">
-								<a href="forms-feedback.html" target="_blank">
+								<a href="{% url "lawsSingle" i.slug %}" target="_blank">
 									<img src="{% static 'images/forms/132.png'%}" alt="Feedback Form" class="img-thumbnail">
-									<h4 class="d-block mt-3 mb-0 center">Feedback</h4>
+									<h4 class="d-block mt-3 mb-0 center">{{i.title}}</h4>
 								</a>
 							</div>
-							<div class="col-12 col-sm-6 col-md-4 mb-5">
-								<a href=" 'forms-feedback-fixed.html" target="_blank">
-									<img src="{% static 'images/forms/132.png' %}" alt="Fixed Feedback Form" class="img-thumbnail">
-									<h4 class="d-block mt-3 mb-0 center">Fixed Feedback</h4>
-								</a>
-							</div>
-							<div class="col-12 col-sm-6 col-md-4 mb-5">
-								<a href="forms-event-registration.html' " target="_blank">
-									<img src="{% static 'images/forms/132.png' %}" alt="Event Registration Form" class="img-thumbnail">
-									<h4 class="d-block mt-3 mb-0 center">Event Registration</h4>
-								</a>
-							</div>
-							<div class="col-12 col-sm-6 col-md-4 mb-5">
-								<a href=" forms-freelance-quote.html' " target="_blank">
-									<img src="{% static 'images/forms/132.png' %}" alt="Freelance Quote Form" class="img-thumbnail">
-									<h4 class="d-block mt-3 mb-0 center">Freelance Quote</h4>
-								</a>
-							</div>
-							<div class="col-12 col-sm-6 col-md-4 mb-5">
-								<a href=" forms-billing-shipping.html " target="_blank">
-									<img src="{%  static 'images/forms/132.png' %}" alt="Billing &amp; Shipping Form" class="img-thumbnail">
-									<h4 class="d-block mt-3 mb-0 center">Billing &amp; Shipping</h4>
-								</a>
-							</div>
-							<div class="col-12 col-sm-6 col-md-4 mb-5">
-								<a href=" forms-job.html " target="_blank">
-									<img src="{ % static 'images/forms/132.png' %}" alt="Job Application Form" class="img-thumbnail">
-									<h4 class="d-block mt-3 mb-0 center">Job Application</h4>
-								</a>
-							</div>
+							{% endfor %}
+
 						</div>
 
 					</div><!-- .postcontent end -->
