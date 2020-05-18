@@ -6,22 +6,32 @@
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="author" content="SemiColonWeb" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- Stylesheets
       ============================================= -->
-      <link
-	href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
- rel="stylesheet" type="text/css" />
-      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css" />
-      <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
-      <link rel="stylesheet" href="{% static 'css/dark.css' %}" type="text/css" />
-      <link rel="stylesheet" href="{% static 'css/font-icons.css' %}" type="text/css" />
-      <link rel="stylesheet" href="{% static 'css/animate.css' %}" type="text/css" />
-      <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Raleway:300,400,500,600,700|Crete+Round:400i"
+	      rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/dark.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/font-icons.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/animate.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/magnific-popup.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/responsive.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/custom.css" %}" type="text/css" />
+	<link href="{% static "images/favicon_io/favicon.ico" %}" rel="icon" type="image/x-icon" />
+	<link rel="stylesheet" href="{% static "css/main_edit.css" %}" />
+	<link rel="stylesheet" href="{% static "css/components/datepicker.css" %}" type="text/css" />
+	<link rel="stylesheet" href="{% static "css/components/bs-select.css" %}" type="text/css" />	
 
-      <link rel="stylesheet" href="{% static 'css/responsive.css' %}" type="text/css" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="icon"  href="{% static 'images/favicon_io/favicon.ico' %}"  type="image/x-icon" />
+	<style>
+	  #header.sticky-header #header-wrap{
+	    background-color: transparent;
+	    box-shadow: unset;
+	  }
+	</style>
       <!-- Document Title
 	============================================= -->
 	<title>Нүүр | МБНҮЭХ</title>
@@ -76,67 +86,64 @@
 
 	</div>
 
-	<!-- Header
-   ============================================= -->
-   <header id="header" class="sticky-style-2">
+	<!-- Header ============================================= -->
+	<header id="header" class="sticky-style-2">
 
-     <div class="container clearfix">
+			<div class="container clearfix">
 
-       <!-- Logo
-	 ============================================= -->
-	 <div id="logo">
-	   <a href="index.html" class="standard-logo" data-dark-logo="{% static 'images/bagsh1.jpg' %}"><img
-					       src="{% static 'images/bagsh1.jpg' %}" alt=""></a>
-	   <a href="index.html" class="retina-logo" data-dark-logo="{% static 'images/bagsh1.jpg' %}">
-	     <img src="{% static 'images/bagsh1.jpg' %}" alt="" style="margin-left: 20%;"></a>
-	 </div><!-- #logo end -->
-	 <div class="top-advert">
-	   <img src="{% static 'images/bagshad.jpg' %}" style="width: 720px;height:90px ;">
-	 </div>
-     </div>
+				<!-- Logo
+				============================================= -->
+				<div id="logo">
+				  <a href="index.html" class="standard-logo" data-dark-logo="{% static "images/bagsh1.jpg" %}">
+					      <img src="{% static "images/bagsh12.png" %}" alt=""></a>
+					<a href="index.html" class="retina-logo" data-dark-logo="{% static "images/bagsh1.jpg" %}">
+					  <img src="{% static "images/bagsh1.jpg" %}" alt="" style="margin-left: 20%;"></a>
+				</div><!-- #logo end -->
+				<div class="top-advert">
+				  <img src="{% static "images/bagshad.jpg" %}" style="width: 720px;height:90px ;">
+				</div>
+			</div>
 
+			<div id="header-wrap">
 
-     <div id="header-wrap">
+				<!-- Primary Navigation
+				============================================= -->
+				<nav id="primary-menu" class="style-2">
 
-       <!-- Primary Navigation
-	 ============================================= -->
-	 <nav id="primary-menu" class="style-2">
+					<div class="container clearfix">
 
-	   <div class="container clearfix">
-
-	     <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+						<div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
 
 
 
-	     <ul class="one-page-menu">
+						<ul class="one-page-menu">
 
-	       <li><a href="index.html">
-		   <div>НҮҮР</div>
-		 </a></li>
-		 <li><a href="news.html">
-		     <div>Мэдээ мэдээлэл</div>
-		   </a></li>
-		   <li><a href="law.html">
-		       <div>Хууль </div>
-		     </a></li>
-		     <li><a href="aboutus.html">
-			 <div>Бидний тухай</div>
-		       </a></li>
-		       <li><a href="contactus.html">
-			   <div>Холбоо барих</div>
-			 </a></li>
+							<li><a href="index.html">
+									<div>НҮҮР</div>
+								</a></li>
+							<li><a href="news.html">
+									<div>Мэдээ мэдээлэл</div>
+								</a></li>
+							<li><a href="law.html">
+									<div>Хууль </div>
+								</a></li>
+							<li><a href="aboutus.html">
+									<div>Бидний тухай</div>
+								</a></li>
+							<li><a href="contactus.html">
+									<div>Холбоо барих</div>
+								</a></li>
 
-	     </ul>
+						</ul>
 
 
+					</div>
 
-	   </div>
+				</nav><!-- #primary-menu end -->
 
-	 </nav><!-- #primary-menu end -->
+			</div>
 
-     </div>
-
-   </header><!-- #header end -->
+</header>
 
   {% block content %}
 
@@ -197,10 +204,22 @@
    ============================================= -->
    <script src="{% static 'js/jquery.js' %}"></script>
    <script src="{% static 'js/plugins.js' %}"></script>
-
    <!-- Footer Scripts
      ============================================= -->
-     <script src="{% static 'js/functions.js' %}"></script>
+   <script src="{% static 'js/functions.js' %}"></script>
+   <script src="{% static 'js/components/datepicker.js' %}"></script>
+
+   <script>
+      jQuery(document).ready( function(){
+	  $('.datepicker').datepicker({
+		  autoclose: true
+	  });
+
+	  $('#feedback-form').on( 'formSubmitSuccess', function(){
+		  $('.feedback-form-success-modal').magnificPopup('open');
+	  });
+      })
+   </script>
 
   </body>
 
