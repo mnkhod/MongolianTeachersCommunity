@@ -54,8 +54,8 @@
 	 ============================================= -->
 	 <div class="top-links">
 	   <ul>
-	     <li><a href="index.html">НҮҮР</a></li>
-	     <li><a href="contactus.html">Холбоо барих</a></li>
+	     <li><a href="{% url "home" %}">НҮҮР</a></li>
+	     <li><a href="{% url "contactUs" %}">Холбоо барих</a></li>
 	   </ul>
 	 </div><!-- .top-links end -->
 
@@ -94,9 +94,9 @@
 	    <!-- Logo
        ============================================= -->
        <div id="logo">
-	 <a href="index.html" class="standard-logo" data-dark-logo="{% static "images/bagsh1.jpg" %}">
+	 <a href="{% url "home" %}" class="standard-logo" data-dark-logo="{% static "images/bagsh1.jpg" %}">
 	   <img src="{% static "images/bagsh12.png" %}" alt=""></a>
-	 <a href="index.html" class="retina-logo" data-dark-logo="{% static "images/bagsh1.jpg" %}">
+	 <a href="{% url "home" %}" class="retina-logo" data-dark-logo="{% static "images/bagsh1.jpg" %}">
 	   <img src="{% static "images/bagsh1.jpg" %}" alt="" style="margin-left: 20%;"></a>
        </div><!-- #logo end -->
        <div class="top-advert">
@@ -163,8 +163,8 @@
 
 	 <div class="col_half col_last tright">
 	   <div class="copyrights-menu copyright-links fright clearfix">
-	     <a href="index.html">Нүүр</a>/<a href="aboutus.html">Бидний тухай</a>/<a href="news.html">Мэдээ
-	       мэдээлэл</a>/<a href="law.html">Гэрээ</a>/<a href="contactus.html">Холбоо барих</a>
+	     <a href="{% url "home" %}">Нүүр</a>/<a href="{% url "aboutUs" %}">Бидний тухай</a>/<a href="{% url "news" %}">Мэдээ
+	       мэдээлэл</a>/<a href="{% url "laws" %}">Гэрээ</a>/<a href="{% url "contactUs" %}">Холбоо барих</a>
 	   </div>
 	   <div class="fright clearfix">
 	     <a href="https://www.facebook.com/Монголын-багш-нарын-үйлдвэрчний-эвлэлийн-холбоо-213658032728499/"
