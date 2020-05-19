@@ -19,6 +19,11 @@ def about_us(req):
     return render(req, 'aboutus.html')
 
 def contact_us(req):
+    if req.method == 'POST':
+        item = ContactUs(fullName=req.POST['fname'],email=req.POST['email']
+            ,phone=req.POST['phone'],text=req.POST['content'])
+        item.save()
+    
     return render(req,'contactus.html' )
 
 #Dynamic
