@@ -2,91 +2,111 @@
 {% load static  %}
 
 {% block content %}
-	<section id="page-title">
+<section id="page-title">
 
-			<div class="container clearfix">
-				<h1>Feedback</h1>
-				<span>Forms Widget</span>
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="#">Home</a></li>
-					<li class="breadcrumb-item"><a href="#">Widgets</a></li>
-					<li class="breadcrumb-item active" aria-current="page">Feedback Form</li>
-				</ol>
-			</div>
+  <div class="container clearfix">
+    <h1>Хууль эрх зүй</h1>
+    <span>Багшийн тухай хууль</span>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url "home" %}">Нүүр</a></li>
+      <li class="breadcrumb-item"><a href="{% url "laws" %}">Хууль</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{laws.title}}</li>
+    </ol>
+  </div>
 
-		</section><!-- #page-title end -->
+</section><!-- #page-title end -->
 
-		<!-- Content
-		============================================= -->
-		<section id="content">
+<!-- Content
+  ============================================= -->
+  <section id="content">
 
-			<div class="content-wrap">
+    <div class="content-wrap">
 
-				<div class="container clearfix">
+      <div class="container clearfix">
 
-					<div class="form-widget" data-alert-type="false">
+	<div class="form-widget" data-alert-type="false">
 
-						<div class="form-result"></div>
+	  <div class="form-result"></div>
 
-						<div class="row">
-							<div class="col-lg-6">
-								<form class="row" id="feedback-form" action="include/form.php" method="post" enctype="multipart/form-data">
-									<div class="form-process"></div>
-									
-									
-
-									<div class="col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
-										<div class="post-detail" style="margin-right: -20px">
-											<h2 style="padding: 5px">{{laws.title}}</h2>
-											<div class="post-item-info">
-												<div class="post-item-photo">
-													<p><iframe frameborder="0" height="700" scrolling="no" src="{% static 'media/' %}{{laws.pdf}}" width="700"></iframe></p>
-				
-												</div>
-											</div>
-											
-										</div>
-									</div>
-									
-									
-									<div class="col-12 hidden">
-										<input type="text" id="feedback-form-botcheck" name="feedback-form-botcheck" value="" />
-									</div>
-
-									
-									<div class="col-12">
-										<button type="submit" name="feedback-form-submit" class="btn btn-secondary">Submit Feedback</button>
-									</div>
-
-									<input type="hidden" name="prefix" value="feedback-form-">
-									<input type="hidden" name="subject" value="New Feedback Received">
-								</form>
-							</div>
-
-							
-						</div>
-
-					</div>
-
-					<a href="#myModal1" data-lightbox="inline" class="feedback-form-success-modal d-none"></a>
-					<div class="modal1 mfp-hide" id="myModal1">
-						<div class="block divcenter" style="background-color: #FFF; max-width: 600px;">
-							<div class="center clearfix" style="padding: 50px;">
-								<img class="mb-4" src="demos/hosting/images/svg/checked.svg" alt="" width="60">
-								<h3 class="uppercase">Thank You.</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis accusantium rerum provident? Porro reiciendis iste voluptas, id sapiente impedit aperiam?</p>
-								<p class="lead mb-2">Get 20% Off on Your Purchased.</p>
-								<h3 class="mb-0">coupon Code: <strong class="text-success">canvas20</strong></h3>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-
-		</section><!-- #content end -->
+	  <div class="row">
+	    <div class="col-lg-6">
+	      <form class="row" id="feedback-form" action="include/form.php" method="post" enctype="multipart/form-data">
+		<div class="form-process"></div>
 
 
 
-{% endblock %}
+		<div class="col-sm-8 col-sm-push-4 col-md-9 col-md-push-3">
+		  <div class="post-detail" style="margin-right: -20px">
+		    <h2 style="padding: 5px">{{laws.title}}</h2>
+		    <div class="post-item-info">
+		      <div class="post-item-photo">
+			<p><iframe frameborder="0" height="700" scrolling="no" src="{% static 'media/' %}{{laws.pdf}}" width="700"></iframe></p>
+
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
+
+
+		<div class="col-12 hidden">
+		  <input type="text" id="feedback-form-botcheck" name="feedback-form-botcheck" value="" />
+		</div>
+
+
+		<input type="hidden" name="prefix" value="feedback-form-">
+		<input type="hidden" name="subject" value="New Feedback Received">
+	      </form>
+
+
+	    </div>
+
+	    <div class="col-lg-6">
+		 <div class="sidebar-widgets-wrap w-50 float-right ">
+
+		   <div class="widget widget_links clearfix">
+
+		     <h4>Хуулиуд</h4>
+		     <ul>
+		       <li><a href=" animations.html "><div>Монгол улсын хууль</div></a></li>
+		     </ul>
+
+		   </div>
+
+		   <div class="widget widget-twitter-feed clearfix">
+
+		     <h4>Facebook</h4>
+
+		     <a href="https://www.facebook.com/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8B%D0%BD-%D0%B1%D0%B0%D0%B3%D1%88-%D0%BD%D0%B0%D1%80%D1%8B%D0%BD-%D2%AF%D0%B9%D0%BB%D0%B4%D0%B2%D1%8D%D1%80%D1%87%D0%BD%D0%B8%D0%B9-%D1%8D%D0%B2%D0%BB%D1%8D%D0%BB%D0%B8%D0%B9%D0%BD-%D1%85%D0%BE%D0%BB%D0%B1%D0%BE%D0%BE-213658032728499/" class="d-block w-100 btn btn-secondary btn-sm fright">Facebook-д нэгдэх</a>
+
+		   </div>
+
+		 </div>
+	    </div>
+
+	  </div>
+
+	</div>
+
+	<a href="#myModal1" data-lightbox="inline" class="feedback-form-success-modal d-none"></a>
+	<div class="modal1 mfp-hide" id="myModal1">
+	  <div class="block divcenter" style="background-color: #FFF; max-width: 600px;">
+	    <div class="center clearfix" style="padding: 50px;">
+	      <img class="mb-4" src="demos/hosting/images/svg/checked.svg" alt="" width="60">
+	      <h3 class="uppercase">Thank You.</h3>
+	      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis accusantium rerum provident? Porro reiciendis iste voluptas, id sapiente impedit aperiam?</p>
+	      <p class="lead mb-2">Get 20% Off on Your Purchased.</p>
+	      <h3 class="mb-0">coupon Code: <strong class="text-success">canvas20</strong></h3>
+	    </div>
+	  </div>
+	</div>
+
+      </div>
+
+    </div>
+
+  </section><!-- #content end -->
+
+
+
+  {% endblock %}
