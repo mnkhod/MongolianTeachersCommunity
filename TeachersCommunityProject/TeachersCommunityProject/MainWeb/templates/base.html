@@ -25,6 +25,9 @@
       <link rel="stylesheet" href="{% static "css/main_edit.css" %}" />
       <link rel="stylesheet" href="{% static "css/components/datepicker.css" %}" type="text/css" />
       <link rel="stylesheet" href="{% static "css/components/bs-select.css" %}" type="text/css" />
+      <link rel="stylesheet" href="{% static "css/components/bs-select.css" %} type="text/css" />
+	  <link rel="stylesheet" href="{% static "css/responsive.css" %}" type="text/css" />
+
 
       <style>
 #header.sticky-header #header-wrap{
@@ -219,8 +222,12 @@
 	   $('.feedback-form-success-modal').magnificPopup('open');
 	 });
        })
+       //$('.selectsplitter').selectsplitter();
      </script>
+     <script src="{% static "js/components/bs-select.js" %} "></script>
 
+	<!-- Select Splitter Plugin -->
+	<script src="{% static "js/components/selectsplitter.js" %}></script>
   </body>
 
 </html>

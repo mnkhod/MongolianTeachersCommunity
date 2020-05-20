@@ -167,8 +167,8 @@
 						============================================= -->
 						<div id="posts" class="small-thumbs">
 							{% for n in news %}
-							<div class="entry clearfix">
-								<h5>{{n.categories.all|join:" / "}}</h5>
+							<div class="entry clearfix newsItem">
+								<h5 id="newsCategory">{{n.categories.all|join:" / "}}</h5>
 								<div class="entry-image">
 									<a href="{% url "newsSingle" n.slug %}"><img class=""
 											src="{% static 'media/' %}{{n.newsImg}}"></a>
@@ -218,54 +218,18 @@
 							<div class="widget clearfix">
 
 								<div class="marg">
-									<div class="col-lg-4">
 										<div class="white-section">
-											<label>Сонголтоор хайх:</label>
-											<div class="dropdown bootstrap-select show-tick dropup">
-												<select class="selectpicker" multiple="" data-live-search="true"
-													tabindex="-98">
-													{% for i in categories %}
-													<option>{{i.name}}</option>
-													{% endfor %}
-												</select>
-												<button type="button" class="btn dropdown-toggle btn-light bs-placeholder"
-													data-toggle="dropdown" role="combobox" aria-owns="bs-select-3"
-													aria-haspopup="listbox" aria-expanded="false" title="Nothing selected">
-													<div class="filter-option">
-														<div class="filter-option-inner">
-															<div class="filter-option-inner-inner">--Сонголт--</div>
-														</div>
-													</div>
-												</button>
-												<div class="dropdown-menu"
-													style="max-height: 192.517px; overflow: hidden; min-height: 46px;">
-													<div class="bs-searchbox">
-														<input type="search" class="form-control" autocomplete="off"
-															role="combobox" aria-label="Search" aria-controls="bs-select-3"
-															aria-autocomplete="list">
-													</div>
-													<div class="inner show" role="listbox" id="bs-select-3" tabindex="-1"
-														aria-multiselectable="true"
-														style="max-height: 128.517px; overflow-y: auto; min-height: 0px;">
-														<ul class="dropdown-menu inner show" role="presentation"
-															style="margin-top: 0px; margin-bottom: 0px;">
-													
-															{% for i in categories %}
-															<li class="">
-																<a role="option" class="dropdown-item" id="bs-select-3-0"
-																	tabindex="0" aria-selected="false" aria-setsize="3"
-																	aria-posinset="1">
-																	<span class=" bs-ok-default check-mark"></span>
-																	<span class="text">{{i.name}}</span>
-																</a>
-															</li>
-															{% endfor %}
+										<h4>Мэдээний төрөл:</h4>
+										<select class="selectpicker" onChange="search()" id="picker">
+											<option value="Бүгд">Бүгд</option>
+											{% for i in categories %}
+											<option class="cat-option" value="{{i.name}}">{{i.name}}</option>
+											{% endfor %}
+										</select>
 
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
+										<br>
+									</div>
+										
 									</div>
 								</div>
 
@@ -282,5 +246,43 @@
 			</div>
 
 		</section><!-- #content end -->
+		<!-- Category filter -->
+		<script type="text/javascript">
+			function search() {
+				var x = "{{news.0.title | safe}}";
+
+				var selectedCatItem = document.getElementById("picker").value;
+				var allElements = document.querySelectorAll('.newsItem');
+				if(selectedCatItem != "Бүгд") {
+					searchByCategory(selectedCatItem, allElements);
+				}
+				else {
+					searchAll(allElements);
+				}
+			}
+			function searchAll(allElements) {
+				allElements.forEach(function(userItem) {
+					userItem.style.display = "block";
+				});
+			}
+			function searchByCategory(selectedCatItem, allElements) {
+				allElements.forEach(function(userItem) {
+					var categoryItem = userItem.querySelector('#newsCategory').innerHTML;
+					var cats = categoryItem.split(" / ");
+					var isNotExist = true;
+					for(var i = 0; i < cats.length; i++) {
+						if((selectedCatItem)==(cats[i])) {
+							isNotExist = false;
+						}
+					}
+					if(isNotExist){
+						userItem.style.display = "none";
+					}
+					else{
+						userItem.style.display = "block";
+					}
+				});
+			} 
+		</script>
 
 {% endblock %}
