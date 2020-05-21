@@ -8,6 +8,8 @@ class BagshAdmin(admin.ModelAdmin):
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title','featured')
     prepopulated_fields = {'slug' : ('title',)}
+    list_filter = ('title','featured')
+    search_fields = ['title']
 
 class LawsAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug' : ('title',)}
