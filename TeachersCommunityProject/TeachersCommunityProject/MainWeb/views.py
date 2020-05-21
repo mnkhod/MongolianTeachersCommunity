@@ -67,6 +67,27 @@ def laws_archive(req):
 
 def laws_single(req,laws_slug):
     laws = Law.objects.get(slug=laws_slug)
+    all_laws = Law.objects.all()
 
-    context = {'laws' : laws }
+    context = {'laws' : laws , 'all' : all_laws}
     return render(req, 'lawcontent.html',context)
+
+def laws_add(req,news_slug):
+    newLaws = News.objects.filter(featured=True)
+    latestLaws = News.objects.order_by('updated')[:3]
+    news = News.objects.get(slug=news_slug)
+    isBagsh = False
+
+    if req.method == 'POST':
+        item = Comment(name=req.POST['name'],email=req.POST['email']
+            ,content=req.POST['content'])
+        item.save()
+        news.comments.add(item)
+        news.save()
+
+    context = {'newLaws' : newLaws , 'laws' : laws, 'latestLaws' : latestLaws }
+    return render(req,"lawcontent.html",context)
+
+
+
+

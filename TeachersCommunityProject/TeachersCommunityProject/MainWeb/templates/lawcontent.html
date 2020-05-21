@@ -68,7 +68,13 @@
 
 		     <h4>Хуулиуд</h4>
 		     <ul>
-		       <li><a href=" animations.html "><div>Монгол улсын хууль</div></a></li>
+		     	{% for i in all %}
+		     		{% if laws.title != i.title %}
+		       		<li><a href="{% url 'lawsSingle' i.slug %}"><div>{{i.title}}</div></a></li>
+		       		{% endif %}
+
+		       		
+		       {% endfor %}
 		     </ul>
 
 		   </div>
