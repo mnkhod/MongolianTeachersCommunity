@@ -12,7 +12,7 @@ def index(req):
 
 
     context = { 'news' : featuredNews , 'topNews' : topTwoNews, 'latestNews' : latestNews }
-  
+
     return render(req,'index.html',context)
 
 def about_us(req):
@@ -23,7 +23,7 @@ def contact_us(req):
         item = ContactUs(fullName=req.POST['fname'],email=req.POST['email']
             ,phone=req.POST['phone'],text=req.POST['content'])
         item.save()
-    
+
     return render(req,'contactus.html' )
 
 #Dynamic
@@ -71,23 +71,3 @@ def laws_single(req,laws_slug):
 
     context = {'laws' : laws , 'all' : all_laws}
     return render(req, 'lawcontent.html',context)
-
-def laws_add(req,news_slug):
-    newLaws = News.objects.filter(featured=True)
-    latestLaws = News.objects.order_by('updated')[:3]
-    news = News.objects.get(slug=news_slug)
-    isBagsh = False
-
-    if req.method == 'POST':
-        item = Comment(name=req.POST['name'],email=req.POST['email']
-            ,content=req.POST['content'])
-        item.save()
-        news.comments.add(item)
-        news.save()
-
-    context = {'newLaws' : newLaws , 'laws' : laws, 'latestLaws' : latestLaws }
-    return render(req,"lawcontent.html",context)
-
-
-
-
