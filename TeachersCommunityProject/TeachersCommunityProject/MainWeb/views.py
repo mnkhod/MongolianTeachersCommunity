@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from .models import News, NewsCategory, ContactUs, Law, Comment , Bagsh
 from .models import Settings
 
@@ -40,10 +41,29 @@ def contact_us(req):
 def news_archive(req):
     featuredNews = News.objects.filter(featured=True)
     latestNews = News.objects.order_by('updated')[:3]
-    news = News.objects.all()
     allCategories = NewsCategory.objects.all()
 
-    context = { 'featuredNews' : featuredNews , 'news' : news, 'latestNews' : latestNews , 'categories' : allCategories }
+    # Paginator
+    objectList = News.objects.all()
+
+    paginator = Paginator(objectList,5)
+    page = req.GET.get('page')
+    page_size = paginator.num_pages
+    page_arr = range(1,page_size+1)
+
+    try:
+        news = paginator.page(page)
+    except PageNotAnInteger:
+        news = paginator.page(1)
+    except EmptyPage:
+        news = paginator.page(paginator.num_pages)
+
+    context = { 'featuredNews' : featuredNews
+               , 'news' : news
+               , 'latestNews' : latestNews
+               , 'categories' : allCategories
+               , 'pageArray' : page_arr
+               , 'page' : page}
 
     if req.method == 'POST':
         item = ContactUs(fullName=req.POST['fname'],email=req.POST['email']
@@ -69,9 +89,25 @@ def news_single(req,news_slug):
     return render(req,"newscontent.html",context)
 
 def laws_archive(req):
-    laws = Law.objects.all()
+    # Paginator
+    objectList = Law.objects.all()
 
-    context = { 'laws' : laws}
+    paginator = Paginator(objectList,6)
+    page = req.GET.get('page')
+    page_size = paginator.num_pages
+    page_arr = range(1,page_size+1)
+
+    try:
+        laws = paginator.page(page)
+    except PageNotAnInteger:
+        laws = paginator.page(1)
+    except EmptyPage:
+        laws = paginator.page(paginator.num_pages)
+
+    context = { 'laws' : laws
+                ,'page' : page
+                , 'pageArray' : page_arr
+               }
 
     return render(req, 'laws.html',context)
 

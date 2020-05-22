@@ -25,7 +25,7 @@
       <link rel="stylesheet" href="{% static "css/main_edit.css" %}" />
       <link rel="stylesheet" href="{% static "css/components/datepicker.css" %}" type="text/css" />
       <link rel="stylesheet" href="{% static "css/components/bs-select.css" %}" type="text/css" />
-      <link rel="stylesheet" href="{% static "css/components/bs-select.css" %} type="text/css" />
+      <link rel="stylesheet" href="{% static "css/components/bs-select.css" %}" type="text/css" />
       <link rel="stylesheet" href="{% static "css/responsive.css" %}" type="text/css" />
 
 
@@ -35,6 +35,12 @@
       box-shadow: unset;
       }
       </style>
+
+
+      {% block internalStyle %}
+
+      {% endblock %}
+
       <!-- Document Title
       ============================================= -->
       <title>Нүүр | МБНҮЭХ</title>
