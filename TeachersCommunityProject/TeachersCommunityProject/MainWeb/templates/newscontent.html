@@ -2,248 +2,247 @@
 {% load static   %}
 
 {% block content %}
-	<section id="content">
+<section id="content">
 
-			<div class="content-wrap">
+  <div class="content-wrap">
 
-				<div class="container clearfix">
+    <div class="container clearfix">
 
-					<!-- Post Content
-					============================================= -->
-					<div class="postcontent nobottommargin clearfix">
+      <!-- Post Content
+	============================================= -->
+	<div class="postcontent nobottommargin clearfix">
 
-						<div class="single-post nobottommargin">
+	  <div class="single-post nobottommargin">
 
-							<!-- Single Post
-							============================================= -->
-							<div class="entry clearfix">
+	    <!-- Single Post
+       ============================================= -->
+       <div class="entry clearfix">
 
-								<!-- Entry Title
-								============================================= -->
-								<div class="entry-title">
-									<h2>{{news.title}}</h2>
-								</div><!-- .entry-title end -->
+	 <!-- Entry Title
+    ============================================= -->
+    <div class="entry-title">
+      <h2>{{news.title}}</h2>
+    </div><!-- .entry-title end -->
 
-								<!-- Entry Meta
-								============================================= -->
-								<ul class="entry-meta clearfix">
-									<li><i class="icon-calendar3"></i>{{news.created}}</li>
-									<li><a href="#"><i class="icon-user"></i> {{news.author.name}}</a></li>
-									<li><i class="icon-folder-open"></i> 
-										{% for i in news.categories.all %}
-											{% if forloop.last %}
-												<a href="{% url 'news' %}">{{i.name}}</a>
-											{% else %}
-												<a href="{% url 'news' %}">{{i.name}}</a>,
-											{% endif %}
-										{% endfor %}
-									</li>
-									<li><a href="//"><i class="icon-comments"></i> {{news.comments.all.count}} Сэтгэгдэл</a></li>	
-								</ul><!-- .entry-meta end -->
+    <!-- Entry Meta
+      ============================================= -->
+      <ul class="entry-meta clearfix">
+	<li><i class="icon-calendar3"></i>{{news.created}}</li>
+	<li><a href="#"><i class="icon-user"></i> {{news.author.name}}</a></li>
+	<li><i class="icon-folder-open"></i>
+	  {% for i in news.categories.all %}
+	  {% if forloop.last %}
+	  <a href="{% url 'news' %}">{{i.name}}</a>
+	  {% else %}
+	  <a href="{% url 'news' %}">{{i.name}}</a>,
+	  {% endif %}
+	  {% endfor %}
+	</li>
+	<li><a href="//"><i class="icon-comments"></i> {{news.comments.all.count}} Сэтгэгдэл</a></li>
+      </ul><!-- .entry-meta end -->
 
-								<!-- Entry Image
-								============================================= -->
-								<div class="entry-image">
-									<a href="//"><img src="{% static "media/" %}{{news.newsImg}}" alt="Blog Single"></a>
-								</div><!-- .entry-image end -->
+      <!-- Entry Image
+	============================================= -->
+	<div class="entry-image">
+	  <a href="//"><img src="{% static "media/" %}{{news.newsImg}}" alt="Blog Single"></a>
+	</div><!-- .entry-image end -->
 
-								<!-- Entry Content
-								============================================= -->
-								<div class="entry-content notopmargin">
-									{{news.body|safe}}
-								</div>
-							</div><!-- .entry end -->
+	<!-- Entry Content
+   ============================================= -->
+   <div class="entry-content notopmargin">
+     {{news.body|safe}}
+   </div>
+       </div><!-- .entry end -->
 
-							<!-- Post Navigation
-							============================================= -->
-							<div class="post-navigation clearfix">
+       <!-- Post Navigation
+	 ============================================= -->
+	 <div class="post-navigation clearfix">
 
-								<div class="col_half nobottommargin">
-									<a href="news.html">&lArr; Буцах</a>
-								</div>
+	   <div class="col_half nobottommargin">
+	     <a href="news.html">&lArr; Буцах</a>
+	   </div>
 
-							</div><!-- .post-navigation end -->
+	 </div><!-- .post-navigation end -->
 
 
-							<!-- Comments
-							============================================= -->
-							<div id="comments" class="clearfix">
+	 <!-- Comments
+    ============================================= -->
+    <div id="comments" class="clearfix">
 
-								<h3 id="comments-title"><span>{{news.comments.all.count}}</span> Сэтгэгдэл</h3>
+      <h3 id="comments-title"><span>{{news.comments.all.count}}</span> Сэтгэгдэл</h3>
 
-								<!-- Comments List
-								============================================= -->
-								<ol class="commentlist clearfix">
+      <!-- Comments List
+	============================================= -->
+	<ol class="commentlist clearfix">
 
-									{% for i in news.comments.all %}
-									<li class="comment even thread-even depth-1" id="li-comment-1">
+	  {% for i in news.comments.all %}
+	  <li class="comment even thread-even depth-1" id="li-comment-1">
 
-										<div id="comment-1" class="comment-wrap clearfix">
+	    <div id="comment-1" class="comment-wrap clearfix">
 
-											<div class="comment-meta">
+	      <div class="comment-meta">
 
-												<div class="comment-author vcard">
+		<div class="comment-author vcard">
 
-													<span class="comment-avatar clearfix">
-													{% if isBagsh %}
-														<img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' />
-													{% else %}
-														<img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' />
-													{% endif %}
-												    </span>
+		  <span class="comment-avatar clearfix">
+		    {% if isBagsh %}
+		    <img alt='' src='http://1.gravatar.com/avatar/30110f1f3a4238c619bcceb10f4c4484?s=60&amp;d=http%3A%2F%2F1.gravatar.com%2Favatar%2Fad516503a11cd5ca435acc9bb6523536%3Fs%3D60&amp;r=G' class='avatar avatar-60 photo' height='60' width='60' />
+		    {% else %}
+		    <img alt='' src='http://0.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=60' class='avatar avatar-60 photo avatar-default' height='60' width='60' />
+		    {% endif %}
+		  </span>
 
-												</div>
+		</div>
 
-											</div>
+	      </div>
 
-											<div class="comment-content clearfix">
+	      <div class="comment-content clearfix">
 
-												<div class="comment-author">{{i.name}}<span><a href="#" title="Permalink to this comment">{{i.created}}</a></span></div>
+		<div class="comment-author">{{i.name}}<span><a href="#" title="Permalink to this comment">{{i.created}}</a></span></div>
 
-												<p>{{i.content}}</p>
-												<a class='comment-reply-link' href='//'><i class="icon-reply"></i></a>
+		<p>{{i.content}}</p>
 
-											</div>
+	      </div>
 
-											<div class="clear"></div>
+	      <div class="clear"></div>
 
-										</div>
+	    </div>
 
-									</li>
-									{% endfor %}
+	  </li>
+	  {% endfor %}
 
 
-								</ol><!-- .commentlist end -->
+	</ol><!-- .commentlist end -->
 
-								<div class="clear"></div>
+	<div class="clear"></div>
 
-								<!-- Comment Form
-								============================================= -->
-								<div id="respond" class="clearfix">
+	<!-- Comment Form
+   ============================================= -->
+   <div id="respond" class="clearfix">
 
-									<h3><span>Сэтгэгдэл </span>үлдээх</h3>
+     <h3><span>Сэтгэгдэл </span>үлдээх</h3>
 
-									<form class="clearfix" action="" method="post" id="commentform">
-										{% csrf_token %}
-										<div class="col_one_third">
-											<label for="author">Нэр</label>
-											<input type="text" name="name" id="author" value="" size="22" tabindex="1" class="sm-form-control" />
-										</div>
+     <form class="clearfix" action="" method="post" id="commentform">
+       {% csrf_token %}
+       <div class="col_one_third">
+	 <label for="author">Нэр</label>
+	 <input type="text" name="name" id="author" value="" size="22" tabindex="1" class="sm-form-control" />
+       </div>
 
-										<div class="col_one_third">
-											<label for="email">Цахим хаяг</label>
-											<input type="text" name="email" id="email" value="" size="22" tabindex="2" class="sm-form-control" />
-										</div>
+       <div class="col_one_third">
+	 <label for="email">Цахим хаяг</label>
+	 <input type="text" name="email" id="email" value="" size="22" tabindex="2" class="sm-form-control" />
+       </div>
 
-										<div class="clear"></div>
+       <div class="clear"></div>
 
-										<div class="col_full">
-											<label for="content">Сэтгэгдэл</label>
-											<textarea name="content" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
-										</div>
+       <div class="col_full">
+	 <label for="content">Сэтгэгдэл</label>
+	 <textarea name="content" cols="58" rows="7" tabindex="4" class="sm-form-control"></textarea>
+       </div>
 
-										<div class="col_full nobottommargin">
-											<button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Илгээх</button>
-										</div>
+       <div class="col_full nobottommargin">
+	 <button name="submit" type="submit" id="submit-button" tabindex="5" value="Submit" class="button button-3d nomargin">Илгээх</button>
+       </div>
 
-									</form>
+     </form>
 
-								</div><!-- #respond end -->
+   </div><!-- #respond end -->
 
-							</div><!-- #comments end -->
+    </div><!-- #comments end -->
 
-						</div>
+	  </div>
 
-					</div><!-- .postcontent end -->
+	</div><!-- .postcontent end -->
 
-				<!-- Sidebar============================================= --> <!--blogSingle iin sidebaruud-->
-					<div class="sidebar nobottommargin col_last clearfix">
-						<div class="sidebar-widgets-wrap">
+	<!-- Sidebar============================================= --> <!--blogSingle iin sidebaruud-->
+	<div class="sidebar nobottommargin col_last clearfix">
+	  <div class="sidebar-widgets-wrap">
 
-							<div class="widget widget-facebook-feed clearfix">
-								
-								<h4>Бидэнтэй нэгдэхийг хүсвэл</h4>
-								<ul class="iconlist facebook-feed" data-username="envato" data-count="2">
-									<li></li>
-								</ul>
+	    <div class="widget widget-facebook-feed clearfix">
 
-								<a href="https://www.facebook.com/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8B%D0%BD-%D0%B1%D0%B0%D0%B3%D1%88-%D0%BD%D0%B0%D1%80%D1%8B%D0%BD-%D2%AF%D0%B9%D0%BB%D0%B4%D0%B2%D1%8D%D1%80%D1%87%D0%BD%D0%B8%D0%B9-%D1%8D%D0%B2%D0%BB%D1%8D%D0%BB%D0%B8%D0%B9%D0%BD-%D1%85%D0%BE%D0%BB%D0%B1%D0%BE%D0%BE-213658032728499/" target="_blank" class="btn btn-secondary btn-sm fright">Facebook нэгдээрэй</a>
+	      <h4>Бидэнтэй нэгдэхийг хүсвэл</h4>
+	      <ul class="iconlist facebook-feed" data-username="envato" data-count="2">
+		<li></li>
+	      </ul>
 
-							</div>
+	      <a href="https://www.facebook.com/%D0%9C%D0%BE%D0%BD%D0%B3%D0%BE%D0%BB%D1%8B%D0%BD-%D0%B1%D0%B0%D0%B3%D1%88-%D0%BD%D0%B0%D1%80%D1%8B%D0%BD-%D2%AF%D0%B9%D0%BB%D0%B4%D0%B2%D1%8D%D1%80%D1%87%D0%BD%D0%B8%D0%B9-%D1%8D%D0%B2%D0%BB%D1%8D%D0%BB%D0%B8%D0%B9%D0%BD-%D1%85%D0%BE%D0%BB%D0%B1%D0%BE%D0%BE-213658032728499/" target="_blank" class="btn btn-secondary btn-sm fright">Facebook нэгдээрэй</a>
 
+	    </div>
 
-							<div class="widget clearfix">
 
-								<div class="tabs nobottommargin clearfix" id="sidebar-tabs">
+	    <div class="widget clearfix">
 
-									<ul class="tab-nav clearfix">
-										<li><a href="#tabs-1">Онцлох</a></li>
-										<li><a href="#tabs-2">Сүүлийн үеийн</a></li>
-									</ul>
+	      <div class="tabs nobottommargin clearfix" id="sidebar-tabs">
 
-									<div class="tab-container">
+		<ul class="tab-nav clearfix">
+		  <li><a href="#tabs-1">Онцлох</a></li>
+		  <li><a href="#tabs-2">Сүүлийн үеийн</a></li>
+		</ul>
 
-										<div class="tab-content clearfix" id="tabs-1"> <!--Онцлох medeenii tab(blogSingle)-->
-											<div id="popular-post-list-sidebar">
+		<div class="tab-container">
 
-												{% for i in featuredNews %}
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="//" class="nobg"><img class="rounded-circle" src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(Онцлох)</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li><i class="icon-comments-alt"></i> {{i.comments.all.count}} Сэтгэгдэл(Онцлох)</li>
-														</ul>
-													</div>
-												</div>
-												{% endfor %}
+		  <div class="tab-content clearfix" id="tabs-1"> <!--Онцлох medeenii tab(blogSingle)-->
+		    <div id="popular-post-list-sidebar">
 
-
-											</div>
-										</div>
-										<div class="tab-content clearfix" id="tabs-2" > <!--Сүүлийн үеийн medeenii tab(blogSingle)-->
-											<div id="recent-post-list-sidebar" >
-
-												{% for i in latestNews %}
-												<div class="spost clearfix">
-													<div class="entry-image">
-														<a href="//" class="nobg"><img class="rounded-circle" src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
-													</div>
-													<div class="entry-c">
-														<div class="entry-title">
-															<h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(Сүүлийн үеийн)</a></h4>
-														</div>
-														<ul class="entry-meta">
-															<li>{{i.created}}(Сүүлийн үеийн)</li>
-														</ul>
-													</div>
-												</div>
-												{% endfor %}
-
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-								
-
-	
-							</div>	
-
-						</div>
-
-					</div><!-- .sidebar end -->
-
-				</div>
-
+		      {% for i in featuredNews %}
+		      <div class="spost clearfix">
+			<div class="entry-image">
+			  <a href="//" class="nobg"><img class="rounded-circle" src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
 			</div>
+			<div class="entry-c">
+			  <div class="entry-title">
+			    <h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(Онцлох)</a></h4>
+			  </div>
+			  <ul class="entry-meta">
+			    <li><i class="icon-comments-alt"></i> {{i.comments.all.count}} Сэтгэгдэл(Онцлох)</li>
+			  </ul>
+			</div>
+		      </div>
+		      {% endfor %}
 
-		</section><!-- #content end -->
+
+		    </div>
+		  </div>
+		  <div class="tab-content clearfix" id="tabs-2" > <!--Сүүлийн үеийн medeenii tab(blogSingle)-->
+		    <div id="recent-post-list-sidebar" >
+
+		      {% for i in latestNews %}
+		      <div class="spost clearfix">
+			<div class="entry-image">
+			  <a href="//" class="nobg"><img class="rounded-circle" src="{% static 'media/' %}{{i.newsImg}}" alt=""></a>
+			</div>
+			<div class="entry-c">
+			  <div class="entry-title">
+			    <h4><a href="{% url "newsSingle" i.slug %}">{{i.title}}(Сүүлийн үеийн)</a></h4>
+			  </div>
+			  <ul class="entry-meta">
+			    <li>{{i.created}}(Сүүлийн үеийн)</li>
+			  </ul>
+			</div>
+		      </div>
+		      {% endfor %}
+
+		    </div>
+		  </div>
+
+		</div>
+
+	      </div>
+
+
+
+	    </div>
+
+	  </div>
+
+	</div><!-- .sidebar end -->
+
+    </div>
+
+  </div>
+
+</section><!-- #content end -->
 
 
 

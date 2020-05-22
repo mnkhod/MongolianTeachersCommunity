@@ -74,7 +74,7 @@
     <div class="col-lg-6 bottommargin">
       <div class="team team-list clearfix">
 	<div class="team-image">
-	  <img src="{% static "media/" %}{{i.profileImg}}" alt="">
+	  <img width=250 height=250  src="{% static "media/" %}{{i.profileImg}}" alt="">
 	</div>
 	<div class="team-desc">
 	  <div class="team-title"><h4>{{i.name}}</h4><span>{{i.roleDesc}}</span></div>
@@ -94,10 +94,14 @@
     </div>
     {% endfor %}
 
-    <div id="oc-clients-full" class="owl-carousel image-carousel carousel-widget" data-margin="30" data-nav="false" data-loop="true" data-autoplay="5000" data-pagi="false" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="5" data-items-xl="6">
+    <div id="oc-clients-full" class="owl-carousel image-carousel carousel-widget w-100 d-flex justify-content-around" 
+      data-margin="30" data-nav="false" 
+      data-loop="false" data-autoplay="5000" 
+      data-pagi="false" data-items-xs="2" data-items-sm="3" 
+      data-items-md="4" data-items-lg="5" data-items-xl="6">
 
       {% for i in setting.hamtragchBaiguulgaZurga.all %}
-      <a href="#"><img src="{% static "media/" %}{{i.img}}" alt="{{i.ner}}"></a>
+      <a href="#"><img src="{% static "media/" %}{{i.img}}"  alt="{{i.ner}}"></a>
       {% endfor %}
 
     </div>

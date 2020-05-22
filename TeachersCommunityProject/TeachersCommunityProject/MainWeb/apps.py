@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class MainwebConfig(AppConfig):
     name = 'MainWeb'
-    verbose_name = "HELLO"
+    verbose_name = "God"
