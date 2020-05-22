@@ -27,9 +27,9 @@ admin.site.register(NewsCategory)
 
 class SettingsAdmin(admin.ModelAdmin):
     fieldsets = (
-        ('Social Media',{ 'fields': ('facebook','twitter','gmail') }),
-        ('Contact Us',{ 'fields': ('phoneList','email','googleMap') }),
-        ('About Us',{ 'fields': ('bidniTitle','bidniMiniDesc','bidniDesc'
+        ('Олон Нийтийн Сүлжээ',{ 'fields': ('facebook','twitter','gmail') }),
+        ('Бидэндээ Холбоо Барих',{ 'fields': ('phoneList','email','googleMap') }),
+        ('Бидний Тухай',{ 'fields': ('bidniTitle','bidniMiniDesc','bidniDesc'
                 ,'bidniImg','hamtragchBaiguulgaZurga','alsinHaraa','erhemZorilgo'
                                 ,'mendchilgee' ) }),
     )

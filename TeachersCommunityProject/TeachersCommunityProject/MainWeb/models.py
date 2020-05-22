@@ -109,41 +109,45 @@ class Settings(models.Model):
     title=models.CharField(max_length=250,default='Сайтын Тохиргоо',editable=False)
 
     # Social Media
-    facebook=models.URLField(max_length=200,default='',blank=True);
-    twitter=models.URLField(max_length=200,default='',blank=True);
-    gmail=models.URLField(max_length=200,default='',blank=True);
+    facebook=models.URLField(max_length=200,default='',blank=True,verbose_name="Фэйсбоок");
+    twitter=models.URLField(max_length=200,default='',blank=True,verbose_name="Твиттер");
+    gmail=models.URLField(max_length=200,default='',blank=True,verbose_name="Цахим Хаяг");
 
     # Holboo Barih
-    phoneList=models.ManyToManyField('phoneNumber')
-    email=models.EmailField(max_length=254)
+    phoneList=models.ManyToManyField('phoneNumber',verbose_name="Утасны дугаарын жагсаалт")
+    email=models.EmailField(max_length=254,verbose_name="Холбоо барих хэсгийн цахим хаяг")
 
     googleMap=models.URLField(
-            max_length=900,default="https://www.google.com/maps/embed/v1/place?q=Mongolian%20Development%20Center&key=AIzaSyAdVlR0-lB7cRHnnGhBReo_pUmTEZBAiJs")
+            max_length=900,default="https://www.google.com/maps/embed/v1/place?q=Mongolian%20Development%20Center&key=AIzaSyAdVlR0-lB7cRHnnGhBReo_pUmTEZBAiJs",verbose_name="Байгууллагын байршил")
 
 
     # Bidni Tuhai
-    bidniImg=models.ImageField(upload_to='bidniTuhai',default='')
-    bidniTitle=models.CharField(max_length=250,default='Бидний Тухай',blank=True)
-    bidniMiniDesc=models.CharField(max_length=250,default='',blank=True)
-    bidniDesc=models.TextField(default='',blank=True)
-    hamtragchBaiguulgaZurga=models.ManyToManyField('hamtragchBaiguulga')
+    bidniImg=models.ImageField(upload_to='bidniTuhai',default='',verbose_name="Бидний тухайн хэсгийн зураг")
+    bidniTitle=models.CharField(max_length=250,default='Бидний Тухай',blank=True,verbose_name="Бидний тухай гарчиг")
+    bidniMiniDesc=models.CharField(max_length=250,default='',blank=True,verbose_name="Бидний тухай хэсгийн дэд гарчиг")
+    bidniDesc=models.TextField(default='',blank=True,verbose_name="Бидний тухай хэсгийн мэдээлэл")
+    hamtragchBaiguulgaZurga=models.ManyToManyField('hamtragchBaiguulga',verbose_name="Бидний тухай хэсгийн зураг")
 
-    alsinHaraa=models.TextField(default='',blank=True)
-    erhemZorilgo=models.TextField(default='',blank=True)
-    mendchilgee=models.TextField(default='',blank=True)
+    alsinHaraa=models.TextField(default='',blank=True,verbose_name="Алсын хараа")
+    erhemZorilgo=models.TextField(default='',blank=True,verbose_name="Эрхэн зорилго")
+    mendchilgee=models.TextField(default='',blank=True,verbose_name="Мэндчилгээ")
 
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name_plural="Вэб Сайтын Тохиргоо"
+        verbose_name="Вэб Сайтын Тохиргоо"
+
 class phoneNumber(models.Model):
-    phone=models.CharField(max_length=200,unique=True)
+    phone=models.CharField(max_length=200,unique=True,verbose_name="Утасны дугаар")
 
     def __str__(self):
         return self.phone
 
 class hamtragchBaiguulga(models.Model):
-    ner=models.CharField(max_length=250,default='',blank=True)
-    img=models.ImageField(upload_to='bidniTuhai',default='')
+    ner=models.CharField(max_length=250,default='',blank=True,verbose_name="Хамтрагч байгууллагын нэр")
+    img=models.ImageField(upload_to='bidniTuhai',default='',verbose_name="Хамтрагч байгууллагын зураг")
 
     def __str__(self):
         return self.ner
