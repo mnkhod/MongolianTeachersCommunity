@@ -18,8 +18,9 @@ def index(req):
 
 def about_us(req):
     setting = Settings.objects.all()[0]
+    teachers = Bagsh.objects.all()
 
-    context = { 'setting' : setting }
+    context = { 'setting' : setting, 'teachers' : teachers }
 
     return render(req, 'aboutus.html',context)
 

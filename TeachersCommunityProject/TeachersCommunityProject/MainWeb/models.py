@@ -4,7 +4,10 @@ from django.utils import timezone
 
 class Bagsh(models.Model):
     name=models.CharField(max_length=250,verbose_name="Нэр")
-    email=models.EmailField(verbose_name="Цахим Хаяг")
+    roleDesc=models.CharField(max_length=250,default='',null=True)
+    desc=models.TextField(default='',null=True)
+    fb=models.URLField(max_length=250,default='',null=True)
+    email=models.EmailField(null=True,verbose_name="Цахим Хаяг")
     profileImg=models.ImageField(upload_to='teachers',verbose_name="Зураг")
     created = models.DateTimeField(auto_now_add=True, editable=False)
 

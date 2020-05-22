@@ -70,93 +70,30 @@
 
   <div class="row clearfix topmargin-lg">
 
+    {% for i in teachers %}
     <div class="col-lg-6 bottommargin">
       <div class="team team-list clearfix">
 	<div class="team-image">
-	  <img src="{% static "images/bag.jpg" %}" alt="">
+	  <img src="{% static "media/" %}{{i.profileImg}}" alt="">
 	</div>
 	<div class="team-desc">
-	  <div class="team-title"><h4>Мөнхбаатар</h4><span>Үүсгэн байгуулагч</span></div>
+	  <div class="team-title"><h4>{{i.name}}</h4><span>{{i.roleDesc}}</span></div>
 	  <div class="team-content">
-	    <p>Монголын багш нарын үйлдвэрчний эвлэлийн холбооны үүсгэн байгуулагч ба 30 жил багшилж байна.</p>
+	    <p>{{i.desc}}</p>
 	  </div>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+	  <a href="{{i.gb}}" class="social-icon si-rounded si-small si-light si-facebook">
 	    <i class="icon-facebook"></i>
 	    <i class="icon-facebook"></i>
 	  </a>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+	  <a href="{{i.mail}}" class="social-icon si-rounded si-small si-light si-gplus">
 	    <i class="icon-gplus"></i>
 	    <i class="icon-gplus"></i>
 	  </a>
 	</div>
       </div>
     </div>
+    {% endfor %}
 
-    <div class="col-lg-6 bottommargin">
-      <div class="team team-list clearfix">
-	<div class="team-image">
-	  <img src="{% static "images/log5.png" %}" alt="Josh Clark">
-	</div>
-	<div class="team-desc">
-	  <div class="team-title"><h4>Josh Clark</h4><span>Co-Founder</span></div>
-	  <div class="team-content">
-	    <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-	  </div>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-	    <i class="icon-facebook"></i>
-	    <i class="icon-facebook"></i>
-	  </a>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-	    <i class="icon-gplus"></i>
-	    <i class="icon-gplus"></i>
-	  </a>
-	</div>
-      </div>
-    </div>
-
-    <div class="col-lg-6 bottommargin">
-      <div class="team team-list clearfix">
-	<div class="team-image">
-	  <img src="{% static "images/log3.png" %}" alt="Mary Jane">
-	</div>
-	<div class="team-desc">
-	  <div class="team-title"><h4>Mary Jane</h4><span>Sales</span></div>
-	  <div class="team-content">
-	    <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-	  </div>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-	    <i class="icon-facebook"></i>
-	    <i class="icon-facebook"></i>
-	  </a>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-	    <i class="icon-gplus"></i>
-	    <i class="icon-gplus"></i>
-	  </a>
-	</div>
-      </div>
-    </div>
-
-    <div class="col-lg-6 bottommargin">
-      <div class="team team-list clearfix">
-	<div class="team-image">
-	  <img src="{% static "images/log4.png" %}" alt="Nix Maxwell">
-	</div>
-	<div class="team-desc">
-	  <div class="team-title"><h4>Nix Maxwell</h4><span>Support</span></div>
-	  <div class="team-content">
-	    <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-	  </div>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-	    <i class="icon-facebook"></i>
-	    <i class="icon-facebook"></i>
-	  </a>
-	  <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-	    <i class="icon-gplus"></i>
-	    <i class="icon-gplus"></i>
-	  </a>
-	</div>
-      </div>
-    </div>
     <div id="oc-clients-full" class="owl-carousel image-carousel carousel-widget" data-margin="30" data-nav="false" data-loop="true" data-autoplay="5000" data-pagi="false" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="5" data-items-xl="6">
 
       {% for i in setting.hamtragchBaiguulgaZurga.all %}
