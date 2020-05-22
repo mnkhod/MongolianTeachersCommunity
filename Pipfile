@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 django = "*"
 pillow = "*"
+dj-static = "*"
+static3 = "*"
 
 [requires]
 python_version = "3.8"
