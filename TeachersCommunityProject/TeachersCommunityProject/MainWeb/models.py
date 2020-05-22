@@ -97,3 +97,50 @@ class ContactUs(models.Model):
         ordering =('-created',)
         verbose_name_plural="Бидэнтэй Холбогдох Жагсаалт"
         verbose_name="Бидэнтэй Холбогдох"
+
+
+
+# GLOBAL PAGE SETTINGS MODELS
+
+class Settings(models.Model):
+    title=models.CharField(max_length=250,default='Сайтын Тохиргоо',editable=False)
+
+    # Social Media
+    facebook=models.URLField(max_length=200,default='',blank=True);
+    twitter=models.URLField(max_length=200,default='',blank=True);
+    gmail=models.URLField(max_length=200,default='',blank=True);
+
+    # Holboo Barih
+    phoneList=models.ManyToManyField('phoneNumber')
+    email=models.EmailField(max_length=254)
+
+    googleMap=models.URLField(
+            max_length=900,default="https://www.google.com/maps/embed/v1/place?q=Mongolian%20Development%20Center&key=AIzaSyAdVlR0-lB7cRHnnGhBReo_pUmTEZBAiJs")
+
+
+    # Bidni Tuhai
+    bidniImg=models.ImageField(upload_to='bidniTuhai',default='')
+    bidniTitle=models.CharField(max_length=250,default='Бидний Тухай',blank=True)
+    bidniMiniDesc=models.CharField(max_length=250,default='',blank=True)
+    bidniDesc=models.TextField(default='',blank=True)
+    hamtragchBaiguulgaZurga=models.ManyToManyField('hamtragchBaiguulga')
+
+    alsinHaraa=models.TextField(default='',blank=True)
+    erhemZorilgo=models.TextField(default='',blank=True)
+    mendchilgee=models.TextField(default='',blank=True)
+
+    def __str__(self):
+        return self.title
+
+class phoneNumber(models.Model):
+    phone=models.CharField(max_length=200,unique=True)
+
+    def __str__(self):
+        return self.phone
+
+class hamtragchBaiguulga(models.Model):
+    ner=models.CharField(max_length=250,default='',blank=True)
+    img=models.ImageField(upload_to='bidniTuhai',default='')
+
+    def __str__(self):
+        return self.ner
