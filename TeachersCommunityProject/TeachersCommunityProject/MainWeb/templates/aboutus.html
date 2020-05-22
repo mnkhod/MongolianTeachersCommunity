@@ -9,7 +9,7 @@
 
 	<div class="col_half nobottommargin center">
 
-	  <img src="{% static "images/aboutus.jpg" %}" alt="Image" data-animate="fadeInLeft" style="border-radius:40px;">
+	  <img src="{% static "media/" %}{{setting.bidniImg}}" alt="Image" data-animate="fadeInLeft" style="border-radius:40px;">
 
 	</div>
 
@@ -17,14 +17,14 @@
 
 	  <div class="heading-block" style="padding-top: 40px;">
 
-	    <h2 style="color:black;">Бидний тухай</h2>
-	    <span>Монголын багш нарын үйлдвэрчний эвлэлийн Холбоо</span>
+	    <h2 style="color:black;">{{setting.bidniTitle}}</h2>
+	    <span>{{setting.bidniMiniDesc}}</span>
 
 	  </div>
 
-	  <p>Монголын багш нарын үйлдвэрчний эвлэлийн холбоо нь гишүүдийнхээ хөдөлмөрлөх эрх, түүнтэй холбогдсон хууль ёсны ашиг сонирхол, боловсролын салбарын багш, ажилтны оюун сэтгэлгээний эрх чөлөөг хамтран хамгаалах зорилгоор энэхүү дүрмийн хүрээнд сайн дурын үндсэн дээр эвлэлдэн нэгдсэн Монголын бүх шатны сургууль, боловсролын байгууллага, СӨББ, МСҮТ-ийн багш, ажилтнуудын эв санааны нэгдэл буюу байнгын үйл ажиллагаа бүхий чөлөөт ардчилсан нэгдэл мөн.</p>
+	  <p>{{setting.bidniDesc}}</p>
 
-	  <a href="#" class="button button-border button-large button-rounded noleftmargin"
+	  <a href="{% url 'contactUs' %}" class="button button-border button-large button-rounded noleftmargin"
 	       style="border-radius: 40px;">Холбоо барих</a>
 
 	</div>
@@ -41,7 +41,7 @@
 	  <h4>Алсын <span>хараа</span>.</h4>
 	</div>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.</p>
+	<p>{{setting.alsinHaraa}}</p>
 
       </div>
 
@@ -51,7 +51,7 @@
 	  <h4>Эрхэм <span>зорилго</span>.</h4>
 	</div>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.</p>
+	<p>{{setting.erhemZorilgo}}</p>
 
       </div>
 
@@ -61,7 +61,7 @@
 	  <h4>Мэндчилгээ</h4>
 	</div>
 
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.</p>
+	<p>{{setting.mendchilgee}}</p>
 
       </div>
 
@@ -159,18 +159,9 @@
     </div>
     <div id="oc-clients-full" class="owl-carousel image-carousel carousel-widget" data-margin="30" data-nav="false" data-loop="true" data-autoplay="5000" data-pagi="false" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="5" data-items-xl="6">
 
-      <a href="#"><img src="{% static "images/clients/1.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/2.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/3.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/4.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/5.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/6.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/7.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/8.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/9.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/10.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/11.png" %}" alt="Clients"></a>
-      <a href="#"><img src="{% static "images/clients/12.png" %}" alt="Clients"></a>
+      {% for i in setting.hamtragchBaiguulgaZurga.all %}
+      <a href="#"><img src="{% static "media/" %}{{i.img}}" alt="{{i.ner}}"></a>
+      {% endfor %}
 
     </div>
   </div>

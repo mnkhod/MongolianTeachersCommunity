@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import News, NewsCategory, ContactUs, Law, Comment , Bagsh
+from .models import Settings
 
 
 #Static
@@ -16,15 +17,23 @@ def index(req):
     return render(req,'index.html',context)
 
 def about_us(req):
-    return render(req, 'aboutus.html')
+    setting = Settings.objects.all()[0]
+
+    context = { 'setting' : setting }
+
+    return render(req, 'aboutus.html',context)
 
 def contact_us(req):
+    setting = Settings.objects.all()[0]
+
+    context = { 'setting' : setting }
+
     if req.method == 'POST':
         item = ContactUs(fullName=req.POST['fname'],email=req.POST['email']
             ,phone=req.POST['phone'],text=req.POST['content'])
         item.save()
 
-    return render(req,'contactus.html' )
+    return render(req,'contactus.html',context )
 
 #Dynamic
 def news_archive(req):
