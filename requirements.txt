@@ -1,7 +1,8 @@
+-i https://pypi.org/simple/
 asgiref==3.2.7
 dj-static==0.0.6
-Django==3.0.6
-Pillow==7.1.2
+django==3.0.7
+pillow==7.1.2
 pytz==2020.1
 sqlparse==0.3.1
 static3==0.7.0
